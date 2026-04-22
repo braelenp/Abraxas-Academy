@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  background: #050505;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  background: #050505;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(153, 69, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 20% 20%, rgba(0, 245, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #050505 0%, #090909 100%);
+  color: #f8fafc;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(153, 69, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black, transparent 85%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='1'%3E%3Cpath d='M0 90h180M90 0v180'/%3E%3Ccircle cx='90' cy='90' r='54'/%3E%3Ccircle cx='90' cy='90' r='24'/%3E%3C/g%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+code,
+pre,
+button,
+input,
+textarea,
+select {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.glow-panel {
+  position: relative;
+  box-shadow:
+    inset 0 0 0 1px rgba(34, 211, 238, 0.16),
+    0 0 24px rgba(153, 69, 255, 0.18),
+    0 0 54px rgba(34, 211, 238, 0.12);
+}
+
+.glow-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(153, 69, 255, 0.14), transparent 42%, rgba(0, 245, 255, 0.12));
+  pointer-events: none;
+}
+
+.ui-action {
+  transition: transform 140ms ease, box-shadow 180ms ease, filter 180ms ease, background-color 180ms ease;
+}
+
+.ui-action:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.ui-action:active {
+  transform: scale(0.985);
+}
+
+.tech-distortion::before,
+.tech-distortion::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tech-distortion::before {
+  opacity: 0.16;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0px, rgba(255, 255, 255, 0.04) 1px, transparent 2px, transparent 5px);
+  mix-blend-mode: soft-light;
+}
+
+.tech-distortion::after {
+  opacity: 0.22;
+  background: linear-gradient(110deg, transparent 18%, rgba(0, 245, 255, 0.16) 48%, transparent 72%);
+}
+
+.wallet-shell .wallet-adapter-dropdown,
+.wallet-shell .wallet-adapter-button-trigger,
+.wallet-shell .wallet-adapter-button {
+  max-width: 10rem;
+}
+
+.wallet-shell .wallet-adapter-button {
+  font-family: 'IBM Plex Mono', monospace;
+  height: 28px !important;
+  padding: 0 8px !important;
+  font-size: 9px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 245, 255, 0.25) !important;
+  background-color: rgba(0, 245, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+}
+
+.wallet-shell .wallet-adapter-button:hover {
+  background-color: rgba(0, 245, 255, 0.14) !important;
+}
+
+.wallet-shell .wallet-adapter-button-trigger {
+  height: 28px !important;
+  min-width: auto !important;
+  padding: 0 8px !important;
+}
+
+.wallet-shell .wallet-adapter-dropdown {
+  top: 36px !important;
+}
+
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  animation: grain-shift 8s steps(8) infinite;
+}
+
+.particle-orbit {
+  animation: particle-float 7s ease-in-out infinite;
+}
+
+.chamber-scan {
+  animation: chamber-scan 7.5s ease-in-out infinite;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(0.5%, 0.5%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate3d(0, -14px, 0) scale(1.2); opacity: 1; }
+}
+
+@keyframes chamber-scan {
+  0%, 100% { transform: translateX(-14%); opacity: 0.14; }
+  50% { transform: translateX(16%); opacity: 0.32; }
+}
