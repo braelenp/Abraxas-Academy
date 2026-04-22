@@ -2,22 +2,40 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "env": {
-    "RESEND_API_KEY": "@resend_api_key"
-  },
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20.x"
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  },
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "^/api/(.*)$",
       "dest": "/api/$1"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "src": "^/assets/(.*)$",
+      "dest": "/assets/$1",
+      "status": 200
+    },
+    {
+      "src": "^/index\\.html$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "^/(.*)\\.js$",
+      "dest": "/$1.js",
+      "status": 200
+    },
+    {
+      "src": "^/(.*)\\.css$",
+      "dest": "/$1.css",
+      "status": 200
     },
     {
       "src": ".*",
