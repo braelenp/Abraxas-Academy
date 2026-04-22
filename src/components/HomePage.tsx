@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import { X } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
 
 export function HomePage() {
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <div className="relative space-y-4">
       {/* Hero Section - First 100 Genesis */}
@@ -37,8 +41,11 @@ export function HomePage() {
           </div>
 
           <div className="mt-4 flex gap-2">
-            <Button className="rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-7 font-medium px-6">
+            <Button disabled className="rounded-lg border-cyan-300/30 bg-slate-500/8 text-[11px] text-slate-400 cursor-not-allowed h-7 font-medium px-6 opacity-50">
               Buy Genesis
+            </Button>
+            <Button onClick={() => setShowPreview(true)} className="rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-7 font-medium px-6">
+              Preview Genesis
             </Button>
           </div>
         </div>
@@ -184,9 +191,65 @@ export function HomePage() {
       </section>
 
       {/* Buy Genesis CTA */}
-      <Button className="w-full rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-9 font-medium">
-        Buy Genesis
-      </Button>
+      <div className="flex gap-2">
+        <Button disabled className="flex-1 rounded-lg border-slate-300/30 bg-slate-500/8 text-[11px] text-slate-400 cursor-not-allowed h-9 font-medium opacity-50">
+          Buy Genesis
+        </Button>
+        <Button onClick={() => setShowPreview(true)} className="flex-1 rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-9 font-medium">
+          Preview Genesis
+        </Button>
+      </div>
+
+      {/* Preview Modal */}
+      {showPreview && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setShowPreview(false)}
+          />
+
+          {/* Modal Content */}
+          <div className="relative z-51 mx-4 flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-3xl border border-violet-300/30 bg-black/85 shadow-[0_0_80px_rgba(153,69,255,0.2)] backdrop-blur-2xl">
+            {/* Header */}
+            <div className="sticky top-0 z-10 flex flex-none items-center justify-between border-b border-violet-300/15 bg-black/90 px-6 py-4 backdrop-blur-xl">
+              <div>
+                <p className="text-xs uppercase tracking-[0.32em] text-violet-200/70">Preview</p>
+                <h2 className="mt-1 text-lg font-bold text-violet-100">Genesis NFT</h2>
+              </div>
+              <button
+                onClick={() => setShowPreview(false)}
+                className="flex-none rounded-lg bg-violet-500/10 p-2 text-violet-300 transition hover:bg-violet-500/20"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Video Content */}
+            <div className="flex-1 overflow-y-auto px-6 py-6">
+              <div className="space-y-4">
+                <div className="relative w-full rounded-xl overflow-hidden bg-black border border-violet-300/20 aspect-square">
+                  <video
+                    autoPlay
+                    controls
+                    className="w-full h-full"
+                    controlsList="nodownload"
+                  >
+                    <source src="/assets/nft-preview.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-violet-100">Sovereign Regime Member</h3>
+                  <p className="mt-1 text-xs text-slate-300">
+                    This is a Genesis NFT from the Sovereign Regime. Limited to the first 100 members only.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

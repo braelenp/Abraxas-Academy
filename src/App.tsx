@@ -13,6 +13,7 @@ import { LoadingPage } from './pages/LoadingPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { HomeTabPage } from './pages/HomeTabPage';
 import { RegimePage } from './pages/RegimePage';
+import { NFTPage } from './pages/NFTPage';
 
 function AppShell() {
   const location = useLocation();
@@ -44,6 +45,7 @@ function AppShell() {
           <Route path="home" element={<HomeTabPage />} />
           <Route path="curriculum" element={<AcademyPage />} />
           <Route path="cadabra" element={<CadabraPage />} />
+          <Route path="nfts" element={<NFTPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="regime" element={<RegimePage />} />
           <Route path="*" element={<Navigate to="home" replace />} />

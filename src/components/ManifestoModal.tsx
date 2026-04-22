@@ -187,6 +187,16 @@ From the DeFranco family — one of the first families of the first 100% Italian
 
 My purpose is service through strength and stability. I bring the operational backbone, the discipline of emergency response, and the practical finance and logistics mindset that turns vision into infrastructure that lasts. I stand for the Sovereign Regime by making sure the systems we build are not only visionary but executable, resilient, and rooted in the real world.
 
+Swiss
+
+Swiss-built — precision, discipline, and control. Son of an Italian — grit, pride, and resilience run deep. Fluent in four languages: Italian, German, French, and Romansh (spoken by only 10,000–30,000 people worldwide).
+
+Border Guard by profession — trained to read people, assess risk in seconds, and act without hesitation. Real-world pressure forged me: responsibility, structure, and consequences are second nature.
+
+In crypto: no hype, no emotion — only positioning, patience, and timing. I don't follow trends — I anticipate them. I don't chase the masses — I move before they arrive.
+
+I build for the long run. For legacy. For those who depend on me.
+
 THE CALL
 
 Abraxas is not a product.

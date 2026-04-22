@@ -2,6 +2,7 @@ import express from 'express';
 import { Resend } from 'resend';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import nftRouter from './api/nft-operations';
 
 dotenv.config({ path: '.env.local' });
 
@@ -10,6 +11,9 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+
+// Register API routes
+app.use('/api/nft', nftRouter);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
