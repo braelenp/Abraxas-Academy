@@ -51,6 +51,26 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Overview Video Section */}
+      <section className="relative overflow-hidden rounded-2xl border border-cyan-300/15 bg-black/50 shadow-[0_0_35px_rgba(153,69,255,0.1)] backdrop-blur-xl">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.12),transparent_50%)]" />
+        <div className="absolute -left-8 top-8 h-24 w-24 rounded-full border border-cyan-300/20" />
+        <div className="absolute right-0 bottom-0 h-16 w-16 rounded-full border border-violet-300/15" />
+        <div className="relative">
+          <div className="w-full aspect-video rounded-xl overflow-hidden bg-black border border-cyan-300/20 m-5">
+            <video
+              autoPlay
+              muted
+              controls
+              className="w-full h-full object-cover"
+            >
+              <source src="/assets/overview.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* Manifesto Section */}
       <section className="relative overflow-hidden rounded-2xl border border-violet-300/12 bg-black/40 shadow-[0_0_25px_rgba(99,102,241,0.06)] backdrop-blur-xl">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.08),transparent_48%)]" />
