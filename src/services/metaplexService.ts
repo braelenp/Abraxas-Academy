@@ -4,7 +4,7 @@
  */
 
 import { PublicKey, Transaction } from '@solana/web3.js';
-import { Metaplex, toMetaplexFile } from '@metaplex-foundation/js';
+// Don't import at top level - use dynamic import in methods
 import { 
   generateGenesisMetadata, 
   getRuneForMember, 
@@ -42,10 +42,10 @@ export interface MintResult {
 // ─── METAPLEX SERVICE ─────────────────────────────────────────────────
 
 export class MetaplexNFTService {
-  private metaplex: Metaplex;
+  private metaplex: any; // Use any to avoid top-level type import
   private static memberCounter = 1; // Track member number (in production, use on-chain state)
 
-  constructor(metaplex: Metaplex) {
+  constructor(metaplex: any) {
     this.metaplex = metaplex;
   }
 
@@ -56,6 +56,9 @@ export class MetaplexNFTService {
    */
   async mintGenesisNFT(owner: PublicKey): Promise<MintResult> {
     try {
+      // Lazy-load toMetaplexFile only when needed
+      const { toMetaplexFile } = require('@metaplex-foundation/js');
+      
       // Get next member number (in production, query on-chain)
       const memberNumber = this.getNextMemberNumber();
 
@@ -141,7 +144,7 @@ export class MetaplexNFTService {
 
       // Filter for Genesis NFTs (by name or symbol)
       const genesisNFT = nfts.find(
-        (nft) =>
+        (nft: any) =>
           nft.name.includes('Abraxas Genesis') ||
           (nft.json?.attributes?.some(
             (attr: any) => attr.trait_type === 'Status' && attr.value === 'Genesis'
@@ -284,7 +287,7 @@ let nftServiceInstance: MetaplexNFTService | null = null;
 /**
  * Get or create NFT service instance
  */
-export function getNFTService(metaplex: Metaplex): MetaplexNFTService {
+export function getNFTService(metaplex: any): MetaplexNFTService {
   if (!nftServiceInstance) {
     nftServiceInstance = new MetaplexNFTService(metaplex);
   }
