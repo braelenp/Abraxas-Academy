@@ -10,6 +10,7 @@ import { useManifesto } from './providers/ManifestoProvider';
 import { AcademyPage } from './pages/AcademyPage';
 import { CadabraPage } from './pages/CadabraPage';
 import { LoadingPage } from './pages/LoadingPage';
+import { LandingPage } from './pages/LandingPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { HomeTabPage } from './pages/HomeTabPage';
 import { RegimePage } from './pages/RegimePage';
@@ -85,7 +86,7 @@ export default function App() {
       <OrionFloat />
       <OrionChat />
       <Routes>
-        <Route path="/" element={<Navigate to="/app/home" replace />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/app/*" element={<AppShell />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

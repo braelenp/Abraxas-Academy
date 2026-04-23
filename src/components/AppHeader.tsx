@@ -9,7 +9,7 @@ export function AppHeader() {
   const { openManifesto } = useManifesto();
 
   return (
-    <header className="sticky top-0 z-30 flex-none border-b border-cyan-300/10 bg-black/80 px-3 py-2 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 flex-none border-b border-cyan-300/10 bg-black/80 px-3 py-4 backdrop-blur-xl">
       <div className="flex items-center justify-between gap-2">
         <BrandLogo compact={false} />
         <div className="flex items-center gap-1.5">

@@ -26,12 +26,90 @@ export function LandingPage() {
             Buy the Genesis NFT. Enter the Academy. Receive your Abraxas ID card, your baseline ecosystem yields, your rune, and your blessing. Later, scale assets through La Casa tokenization inside the main dApp.
           </p>
 
-          <div className="mt-6 space-y-3">
-            {manifestoLines.map((line) => (
-              <div key={line} className="rounded-2xl border border-white/6 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-slate-200/92">
-                {line}
-              </div>
-            ))}
+          <div className="mt-6 space-y-2">
+            <p className="text-xs uppercase tracking-[0.34em] text-cyan-200/70">Regime Overview</p>
+            <div className="w-full rounded-[1.5rem] border border-cyan-300/20 overflow-hidden shadow-[0_0_32px_rgba(153,69,255,0.15)]">
+              <video
+                className="w-full h-auto"
+                controls
+                muted
+                poster="/assets/overview.mp4"
+              >
+                <source src="/assets/overview.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div className="mt-6 space-y-6">
+            {(() => {
+              const sections: { title?: string; subtitle?: string; lines: string[] }[] = [];
+              let currentSection: { title?: string; subtitle?: string; lines: string[] } = { lines: [] };
+
+              manifestoLines.forEach((line) => {
+                const isMainTitle = line === 'ABRAXAS MANIFESTO';
+                const isSubtitle = line === 'The Sovereign Regime' && sections.length === 0;
+                const isSection = line && line === line.toUpperCase() && line.length > 1 && line !== '';
+
+                if (isMainTitle) {
+                  currentSection.title = line;
+                } else if (isSubtitle) {
+                  currentSection.subtitle = line;
+                } else if (isSection) {
+                  if (currentSection.lines.length > 0 || currentSection.title) {
+                    sections.push(currentSection);
+                  }
+                  currentSection = { title: line, lines: [] };
+                } else {
+                  currentSection.lines.push(line);
+                }
+              });
+
+              if (currentSection.lines.length > 0 || currentSection.title) {
+                sections.push(currentSection);
+              }
+
+              return sections.map((section, idx) => (
+                <div key={idx}>
+                  {section.title && section.title === 'ABRAXAS MANIFESTO' && (
+                    <div className="text-center mb-2">
+                      <h2 className="text-2xl font-black tracking-[0.1em] text-cyan-300">
+                        {section.title}
+                      </h2>
+                    </div>
+                  )}
+
+                  {section.subtitle && (
+                    <div className="text-center mb-6">
+                      <h3 className="text-lg font-bold tracking-[0.08em] text-violet-300/90">
+                        {section.subtitle}
+                      </h3>
+                    </div>
+                  )}
+
+                  {section.title && section.title !== 'ABRAXAS MANIFESTO' && (
+                    <div className="text-center mb-3">
+                      <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
+                        {section.title}
+                      </p>
+                    </div>
+                  )}
+
+                  <div className={`space-y-2 ${section.title && section.title !== 'ABRAXAS MANIFESTO' ? 'pl-4' : ''}`}>
+                    {section.lines.map((line) => {
+                      if (line === '') {
+                        return <div key={Math.random()} className="h-2" />;
+                      }
+                      return (
+                        <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-4 py-2 text-sm leading-6 text-slate-200/92">
+                          {line}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ));
+            })()}
           </div>
 
           <div className="mt-7 grid gap-3">
