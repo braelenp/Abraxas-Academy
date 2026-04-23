@@ -7,7 +7,7 @@ import { Card } from '../components/ui/card';
 
 export function LandingPage() {
   return (
-    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50">
+    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50 bg-slate-950">
       <div className="flex items-center justify-between">
         <BrandLogo />
         <Badge className="border-violet-300/20 bg-violet-500/12 text-violet-100/80">Official Front End</Badge>
