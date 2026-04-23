@@ -61,8 +61,9 @@ export function useGenesisNFT(): UseGenesisNFTReturn {
       const nft = await nftService.fetchGenesisNFT(publicKey);
       setGenesisNFT(nft);
     } catch (err) {
-      console.error('Error fetching Genesis NFT:', err);
-      setError(err instanceof Error ? err.message : 'Failed to fetch Genesis NFT');
+      const errorMsg = err instanceof Error ? err.message : 'Failed to fetch Genesis NFT';
+      console.warn('Genesis NFT fetch error (non-critical):', errorMsg);
+      // Don't set error state for non-critical failures
       setGenesisNFT(null);
     } finally {
       setIsLoading(false);

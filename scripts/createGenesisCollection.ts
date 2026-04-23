@@ -5,12 +5,14 @@
  */
 
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
-import { Metaplex, toMetaplexFile } from '@metaplex-foundation/js';
+import { Metaplex, toMetaplexFile, keypairIdentity, bundlrStorage } from '@metaplex-foundation/js';
 import * as fs from 'fs';
 
 // Configuration
 const RPC_URL = process.env.VITE_SOLANA_RPC || 'https://api.devnet.solana.com';
 const KEYPAIR_PATH = process.env.SOLANA_KEYPAIR_PATH || `${process.env.HOME}/.config/solana/id.json`;
+const IS_DEVNET = RPC_URL.includes('devnet');
+const BUNDLR_URL = IS_DEVNET ? 'https://devnet.bundlr.network' : 'https://node1.bundlr.network';
 
 // Collection metadata
 const COLLECTION_NAME = 'Abraxas Genesis';
@@ -32,17 +34,14 @@ async function createGenesisCollection() {
   const keypair = Keypair.fromSecretKey(new Uint8Array(keypairData));
 
   console.log(`📍 Using keypair: ${keypair.publicKey.toBase58()}`);
-  console.log(`🌐 RPC URL: ${RPC_URL}\n`);
+  console.log(`🌐 RPC URL: ${RPC_URL}`);
+  console.log(`📦 Bundlr URL: ${BUNDLR_URL}\n`);
 
-  // Initialize Metaplex
+  // Initialize Metaplex with proper identity and storage
   const connection = new Connection(RPC_URL, 'confirmed');
-  const metaplex = new Metaplex(connection);
-  metaplex.use({
-    install(metaplex) {
-      metaplex.identity().setDriver({} as any);
-    },
-  });
-  metaplex.identity().setDriver({ keypair } as any);
+  const metaplex = Metaplex.make(connection)
+    .use(keypairIdentity(keypair))
+    .use(bundlrStorage({ address: BUNDLR_URL }));
 
   try {
     // Create collection metadata

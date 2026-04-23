@@ -1,17 +1,20 @@
+// Polyfills for Node.js modules used in browser
 import { Buffer } from 'buffer';
-import process from 'process';
+import process from 'process/browser';
 
 declare global {
   interface Window {
-    Buffer?: typeof Buffer;
-    process?: typeof process;
+    Buffer: typeof Buffer;
+    process: typeof process;
   }
 }
 
-if (!window.Buffer) {
-  window.Buffer = Buffer;
-}
+// Ensure polyfills are available globally
+globalThis.Buffer = Buffer;
+globalThis.process = process;
 
-if (!window.process) {
-  window.process = process;
+// Also set on window for legacy code
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer;
+  (window as any).process = process;
 }

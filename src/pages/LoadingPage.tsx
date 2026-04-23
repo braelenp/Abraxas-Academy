@@ -20,7 +20,7 @@ export function LoadingPage() {
     const interval = window.setInterval(() => {
       setGlitchActive(true);
       window.setTimeout(() => setGlitchActive(false), 120);
-    }, 2600);
+    }, 800);  // Changed to match new loading time
     return () => window.clearInterval(interval);
   }, []);
 
@@ -47,7 +47,7 @@ export function LoadingPage() {
   useEffect(() => {
     const interval = window.setInterval(() => {
       const elapsed = Date.now() - startRef.current;
-      setProgress(Math.min(100, (elapsed / 2600) * 100));
+      setProgress(Math.min(100, (elapsed / 800) * 100));  // Changed to match new loading time
     }, 40);
     return () => window.clearInterval(interval);
   }, []);

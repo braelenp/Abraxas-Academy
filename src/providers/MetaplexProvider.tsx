@@ -4,6 +4,8 @@ import { Metaplex } from '@metaplex-foundation/js';
 
 interface MetaplexContextType {
   metaplex: Metaplex | null;
+  isInitialized: boolean;
+  error: string | null;
 }
 
 const MetaplexContext = createContext<MetaplexContextType | undefined>(undefined);
@@ -11,18 +13,27 @@ const MetaplexContext = createContext<MetaplexContextType | undefined>(undefined
 export function MetaplexProvider({ children }: { children: ReactNode }) {
   const { connection } = useConnection();
 
-  const metaplex = useMemo(() => {
-    if (!connection) return null;
+  const { metaplex, isInitialized, error } = useMemo(() => {
+    if (!connection) {
+      return { metaplex: null, isInitialized: false, error: null };
+    }
+    
     try {
-      return new Metaplex(connection);
-    } catch (error) {
-      console.error('Failed to initialize Metaplex:', error);
-      return null;
+      return {
+        metaplex: new Metaplex(connection),
+        isInitialized: true,
+        error: null,
+      };
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      console.warn('Metaplex initialization non-critical error (app will still work):', errorMsg);
+      // Don't crash - app can work without Metaplex
+      return { metaplex: null, isInitialized: false, error: errorMsg };
     }
   }, [connection]);
 
   return (
-    <MetaplexContext.Provider value={{ metaplex }}>
+    <MetaplexContext.Provider value={{ metaplex, isInitialized, error }}>
       {children}
     </MetaplexContext.Provider>
   );
