@@ -1,6 +1,6 @@
 // Polyfills for Node.js modules used in browser
 import { Buffer } from 'buffer';
-import process from 'process/browser';
+import process from 'process';
 
 declare global {
   interface Window {
