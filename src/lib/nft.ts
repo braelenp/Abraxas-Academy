@@ -71,19 +71,36 @@ export const SOVEREIGN_RUNES = [
   '◈', // White Diamond
 ] as const;
 
-// ─── BLESSINGS FOR FIRST 100 ──────────────────────────────────────────
+// ─── BLESSING COMPONENTS FOR LOCAL GENERATION ────────────────────────
 
-export const SOVEREIGN_BLESSINGS = [
-  'Bearer of the First Frequency',
-  'Guardian of Capital Flow',
-  'Architect of Sovereignty',
-  'Keeper of the Regime',
-  'Forger of Wealth',
-  'Oracle of Markets',
-  'Shepherd of Growth',
-  'Sentinel of Systems',
-  'Navigator of Flows',
-  'Custodian of Knowledge',
+// Blessing components combined deterministically per member
+const BLESSING_PREFIXES = [
+  'Bearer of',
+  'Guardian of',
+  'Architect of',
+  'Keeper of',
+  'Forger of',
+  'Oracle of',
+  'Shepherd of',
+  'Sentinel of',
+  'Navigator of',
+  'Custodian of',
+];
+
+const BLESSING_QUALITIES = [
+  'the First Frequency',
+  'Capital Flow',
+  'Sovereignty',
+  'the Regime',
+  'Wealth',
+  'Markets',
+  'Growth',
+  'Systems',
+  'Flows',
+  'Knowledge',
+];
+
+const BLESSING_ASPECTS = [
   'Amplifier of Edge',
   'Protector of Capital',
   'Builder of Legacy',
@@ -113,7 +130,7 @@ export function generateGenesisMetadata(
   memberRune: string,
   memberBlessing: string,
   isFoundingMember: boolean = memberNumber <= 100,
-  imageUri: string = 'https://abraxas-academy.vercel.app/assets/genesis-nft.png'
+  mediaUri: string = 'https://abraxas-academy.vercel.app/assets/nft-preview.mp4'
 ): GenesisNFTMetadata {
   const cohortStatus = isFoundingMember ? 'Sovereign Few' : 'Genesis Member';
   const cohortNumber = isFoundingMember ? `First 100 - Member #${memberNumber}` : `Member #${memberNumber}`;
@@ -121,7 +138,7 @@ export function generateGenesisMetadata(
   return {
     name: `Abraxas Genesis ${cohortStatus}`,
     description: `${cohortStatus} of the Abraxas Sovereign Regime. Lifetime access to Academy, baseline ecosystem yields, and the path to capital formation. ${memberBlessing}.`,
-    image: imageUri,
+    image: 'https://abraxas-academy.vercel.app/assets/nft-preview.mp4',
     external_url: 'https://abraxas-academy.vercel.app',
     attributes: [
       {
@@ -158,8 +175,8 @@ export function generateGenesisMetadata(
       ],
       files: [
         {
-          uri: imageUri,
-          type: 'image/png',
+          uri: mediaUri,
+          type: 'video/mp4',
         },
       ],
     },
@@ -169,43 +186,59 @@ export function generateGenesisMetadata(
 // ─── NFT CONSTANTS ────────────────────────────────────────────────────
 
 export const GENESIS_NFT_CONFIG = {
-  // Update this to the actual Metaplex Candy Machine or collection ID
-  COLLECTION_MINT: 'GENESIS_COLLECTION_MINT_ADDRESS', // To be set
+  // Genesis Collection NFT (parent collection)
+  // Set this after creating the collection NFT
+  COLLECTION_MINT: process.env.VITE_COLLECTION_MINT || 'GENESIS_COLLECTION_MINT_ADDRESS',
   
-  // Update to the actual authority wallet
-  AUTHORITY_WALLET: 'AC3yGEL7UfwRmVWJcXuKQYT1sJUJwgEL9FGQ2cjb9qKh',
+  // Authority wallet (creator, signer)
+  AUTHORITY_WALLET: process.env.VITE_CREATOR_WALLET || 'AC3yGEL7UfwRmVWJcXuKQYT1sJUJwgEL9FGQ2cjb9qKh',
   
   // NFT Storage
-  IMAGE_BASE_URI: 'https://abraxas-academy.vercel.app/assets/',
-  METADATA_BASE_URI: 'ipfs://', // Will be updated after upload
+  MEDIA_URI: 'https://abraxas-academy.vercel.app/assets/nft-preview.mp4',
+  METADATA_BASE_URI: 'ipfs://',
   
   // Minting Parameters
-  PRICE: 100_000_000, // Price in lamports (0 for free, adjust as needed)
+  PRICE: 0, // Free minting on devnet for testing
   MAX_SUPPLY: 100, // First cohort limited to 100
   
   // Traits Configuration
   TOTAL_RUNES: SOVEREIGN_RUNES.length,
-  TOTAL_BLESSINGS: SOVEREIGN_BLESSINGS.length,
+  ALLOW_DUPLICATES: false, // Each member gets unique assignment
 };
 
 // ─── HELPER FUNCTIONS ─────────────────────────────────────────────────
 
 /**
  * Get the rune for a given member number
- * Cycles through runes for first 100 members
+ * Sequential assignment: Member 1 gets first rune, Member 2 gets second, etc.
+ * Only 30 runes available for first 100 members
  */
 export function getRuneForMember(memberNumber: number): string {
+  if (memberNumber < 1 || memberNumber > 100) {
+    return SOVEREIGN_RUNES[0]; // Fallback
+  }
+  // Map members 1-30 to runes 1-30, then repeat for 31-60, 61-90, 91-100
   const index = (memberNumber - 1) % SOVEREIGN_RUNES.length;
   return SOVEREIGN_RUNES[index];
 }
 
 /**
- * Get the blessing for a given member number
- * Cycles through blessings for first 100 members
+ * Generate a unique blessing for a member based on their number
+ * Deterministic: same member number always gets the same blessing
  */
 export function getBlessingForMember(memberNumber: number): string {
-  const index = (memberNumber - 1) % SOVEREIGN_BLESSINGS.length;
-  return SOVEREIGN_BLESSINGS[index];
+  // Create deterministic but unique blessing per member
+  const prefixIndex = (memberNumber - 1) % BLESSING_PREFIXES.length;
+  const qualityIndex = Math.floor((memberNumber - 1) / BLESSING_PREFIXES.length) % BLESSING_QUALITIES.length;
+  const aspectIndex = (memberNumber - 1) % BLESSING_ASPECTS.length;
+  
+  // For members 1-10, use simple prefix + quality
+  if (memberNumber <= 10) {
+    return `${BLESSING_PREFIXES[prefixIndex]} ${BLESSING_QUALITIES[qualityIndex]}`;
+  }
+  
+  // For members 11+, use the curated aspects for variety
+  return BLESSING_ASPECTS[aspectIndex];
 }
 
 /**
@@ -226,6 +259,31 @@ export function getMemberStatusText(memberNumber: number): string {
 }
 
 /**
+ * Verify NFT belongs to Genesis Collection
+ * Checks if an NFT's collection matches our master collection
+ */
+export function isGenesisNFT(metadata: any, collectionMint?: string): boolean {
+  const targetCollection = collectionMint || GENESIS_NFT_CONFIG.COLLECTION_MINT;
+  
+  // Check if metadata has collection reference
+  if (metadata?.collection?.key === targetCollection) {
+    return true;
+  }
+  
+  // Check if NFT name indicates it's a Genesis NFT
+  if (metadata?.name?.includes('Abraxas Genesis')) {
+    return true;
+  }
+  
+  // Check attributes
+  if (metadata?.attributes?.some((attr: any) => attr.trait_type === 'Status' && attr.value === 'Genesis')) {
+    return true;
+  }
+  
+  return false;
+}
+
+/**
  * Validate member features
  */
 export interface MemberFeatures {
@@ -235,10 +293,11 @@ export interface MemberFeatures {
   hasCustomRune: boolean;
   hasBlessing: boolean;
   isSovereignFew: boolean;
+  isCollectionMember: boolean;
   foundingMemberPerks: string[];
 }
 
-export function getMemberFeatures(memberNumber: number): MemberFeatures {
+export function getMemberFeatures(memberNumber: number, isCollectionMember: boolean = true): MemberFeatures {
   const sovereign = isSovereignFew(memberNumber);
   
   return {
@@ -248,6 +307,7 @@ export function getMemberFeatures(memberNumber: number): MemberFeatures {
     hasCustomRune: true,
     hasBlessing: true,
     isSovereignFew: sovereign,
+    isCollectionMember,
     foundingMemberPerks: sovereign ? [
       'Founding Member status on ID card',
       'Higher baseline yield multiplier',
@@ -264,11 +324,11 @@ export default {
   GENESIS_NFT_COLLECTION,
   GENESIS_NFT_CONFIG,
   SOVEREIGN_RUNES,
-  SOVEREIGN_BLESSINGS,
   generateGenesisMetadata,
   getRuneForMember,
   getBlessingForMember,
   isSovereignFew,
+  isGenesisNFT,
   getMemberStatusText,
   getMemberFeatures,
 };

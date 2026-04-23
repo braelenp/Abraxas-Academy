@@ -10,7 +10,9 @@ import {
   getRuneForMember, 
   getBlessingForMember,
   GENESIS_NFT_COLLECTION,
-  isSovereignFew 
+  GENESIS_NFT_CONFIG,
+  isSovereignFew,
+  isGenesisNFT,
 } from '../lib/nft';
 
 // ─── TYPES ────────────────────────────────────────────────────────────
@@ -85,16 +87,26 @@ export class MetaplexNFTService {
       console.log('Metadata uploaded to:', uploadResult);
 
       // Create the NFT using Metaplex SDK
-      const { nft, response } = await this.metaplex.nfts().create({
+      const nftCreationConfig: any = {
         name: metadata.name,
         symbol: GENESIS_NFT_COLLECTION.symbol,
         uri: uploadResult, // Metadata URI
         sellerFeeBasisPoints: GENESIS_NFT_COLLECTION.sellerFeeBasisPoints,
-        // Uncomment when collection is set up:
-        // collection: new PublicKey(GENESIS_NFT_CONFIG.COLLECTION_MINT),
-        // collectionAuthority: this.metaplex.identity(),
-        // isCollection: false,
-      });
+      };
+
+      // Add collection reference if configured
+      if (GENESIS_NFT_CONFIG.COLLECTION_MINT && GENESIS_NFT_CONFIG.COLLECTION_MINT !== 'GENESIS_COLLECTION_MINT_ADDRESS') {
+        try {
+          nftCreationConfig.collection = new PublicKey(GENESIS_NFT_CONFIG.COLLECTION_MINT);
+          nftCreationConfig.collectionAuthority = this.metaplex.identity();
+          nftCreationConfig.isCollection = false;
+          console.log('Linking to Genesis Collection:', GENESIS_NFT_CONFIG.COLLECTION_MINT);
+        } catch (err) {
+          console.warn('Invalid collection mint, creating standalone NFT:', err);
+        }
+      }
+
+      const { nft, response } = await this.metaplex.nfts().create(nftCreationConfig);
 
       // Get mint address from the NFT object
       const mintAddress = (nft as any).mint?.address || (nft as any).address;
@@ -133,11 +145,20 @@ export class MetaplexNFTService {
           nft.name.includes('Abraxas Genesis') ||
           (nft.json?.attributes?.some(
             (attr: any) => attr.trait_type === 'Status' && attr.value === 'Genesis'
-          ))
+          )) ||
+          isGenesisNFT(nft.json)
       );
 
       if (!genesisNFT) {
         return null;
+      }
+
+      // Verify collection membership if collection is configured
+      if (GENESIS_NFT_CONFIG.COLLECTION_MINT && GENESIS_NFT_CONFIG.COLLECTION_MINT !== 'GENESIS_COLLECTION_MINT_ADDRESS') {
+        const isPartOfCollection = isGenesisNFT(genesisNFT.json, GENESIS_NFT_CONFIG.COLLECTION_MINT);
+        if (!isPartOfCollection) {
+          console.warn('NFT found but not verified as member of Genesis Collection');
+        }
       }
 
       // Extract metadata
