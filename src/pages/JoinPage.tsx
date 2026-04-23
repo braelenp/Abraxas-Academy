@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMembership } from '../providers/MembershipProvider';
+import { useGenesisNFT } from '../hooks/useGenesisNFT';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 
 export function JoinPage() {
   const { isConnected, isMember, isActivating, activateMembership, memberRune, memberNumber, blessing } = useMembership();
+  const { hasGenesisNFT, genesisNFT, isLoading: isCheckingNFT, error: nftError } = useGenesisNFT();
+  const [txHash, setTxHash] = useState<string | null>(null);
+  const [showTxStatus, setShowTxStatus] = useState(false);
 
   return (
     <div className="space-y-4">
@@ -23,10 +28,17 @@ export function JoinPage() {
         </div>
 
         <div className="mt-6 grid gap-3">
-          <Button onClick={() => void activateMembership()} disabled={!isConnected || isMember || isActivating}>
+          <Button 
+            onClick={async () => {
+              setShowTxStatus(true);
+              await activateMembership();
+            }} 
+            disabled={!isConnected || isMember || isActivating}
+          >
             {isMember ? 'Genesis NFT Active' : isActivating ? 'Forging Membership...' : 'Buy Genesis NFT'}
           </Button>
           {!isConnected ? <p className="text-xs uppercase tracking-[0.24em] text-amber-200/70">Connect Phantom to activate membership.</p> : null}
+          {nftError && !isActivating ? <p className="text-xs uppercase tracking-[0.24em] text-red-200/70">Error: {nftError}</p> : null}
           {isMember ? <Link to="/app/academy"><Button variant="secondary" className="w-full">Open Full Curriculum</Button></Link> : null}
         </div>
       </Card>
@@ -47,6 +59,31 @@ export function JoinPage() {
           <p className="mt-6 max-w-[16rem] text-sm leading-6 text-slate-100/90">{blessing}</p>
         </div>
       </Card>
+
+      {showTxStatus && (hasGenesisNFT || isActivating) && (
+        <Card>
+          <Badge className="border-green-300/20 bg-green-500/12 text-green-100/80">
+            {hasGenesisNFT ? 'NFT Verified' : 'Processing'}
+          </Badge>
+          <div className="mt-4 space-y-3 rounded-2xl border border-green-300/20 bg-green-500/5 p-4">
+            {isActivating && (
+              <div className="flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></div>
+                <p className="text-sm text-green-100/80">Forging your Genesis NFT...</p>
+              </div>
+            )}
+            {hasGenesisNFT && genesisNFT && (
+              <>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-green-400"></div>
+                  <p className="text-sm text-green-100/80">NFT minted successfully</p>
+                </div>
+                <p className="text-xs text-green-100/60">Mint: {genesisNFT?.mint?.toString().slice(0, 20)}...</p>
+              </>
+            )}
+          </div>
+        </Card>
+      )}
     </div>
   );
 }
