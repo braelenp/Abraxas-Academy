@@ -13,7 +13,6 @@ export function LandingPage() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0),rgba(0,0,0,0.8))]" />
       <div className="relative z-10 flex items-center justify-between">
         <BrandLogo />
-        <Badge className="border-violet-300/20 bg-violet-500/12 text-violet-100/80">Official Front End</Badge>
       </div>
 
       <section className="relative z-10 mt-8 overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-black/55 px-5 py-7 shadow-[0_0_52px_rgba(153,69,255,0.14)] backdrop-blur-2xl">
@@ -90,26 +89,34 @@ export function LandingPage() {
                     </div>
                   )}
 
-                  {section.title && section.title !== 'ABRAXAS MANIFESTO' && (
-                    <div className="mb-3 pl-0">
-                      <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
-                        {section.title}
-                      </p>
+                  {section.title && section.title !== 'ABRAXAS MANIFESTO' && section.lines.length > 0 && (
+                    <div className="rounded-lg border border-cyan-300/30 overflow-hidden bg-cyan-500/[0.04]">
+                      <div className="px-4 py-3 border-b border-cyan-300/20">
+                        <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
+                          {section.title}
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-2 p-4">
+                        {section.lines.map((line) => {
+                          if (line === '') {
+                            return <div key={Math.random()} className="h-2" />;
+                          }
+                          return (
+                            <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-3 py-2 text-sm leading-6 text-slate-200/92">
+                              {line}
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
 
-                  {section.lines.length > 0 && (
-                    <div className={`space-y-2 ${section.title && section.title !== 'ABRAXAS MANIFESTO' ? 'pl-6 border-l-2 border-cyan-300/20' : ''}`}>
-                      {section.lines.map((line) => {
-                        if (line === '') {
-                          return <div key={Math.random()} className="h-2" />;
-                        }
-                        return (
-                          <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-4 py-2 text-sm leading-6 text-slate-200/92">
-                            {line}
-                          </div>
-                        );
-                      })}
+                  {section.title && section.title !== 'ABRAXAS MANIFESTO' && section.lines.length === 0 && (
+                    <div className="mb-3">
+                      <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
+                        {section.title}
+                      </p>
                     </div>
                   )}
                 </div>
