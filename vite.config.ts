@@ -11,6 +11,18 @@ export default defineConfig({
   },
   define: {
     global: 'globalThis',
+    'process.browser': true,
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext',
+    },
+    include: [
+      'process/browser',
+      'buffer',
+      '@metaplex-foundation/js',
+      '@solana/web3.js',
+    ],
   },
   server: {
     proxy: {
