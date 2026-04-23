@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import { manifestoLines } from '../lib/data';
 import { BrandLogo } from '../components/BrandLogo';
 import { Badge } from '../components/ui/badge';
@@ -6,6 +8,17 @@ import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 
 export function LandingPage() {
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+
+  const toggleSection = (title: string) => {
+    const newExpanded = new Set(expandedSections);
+    if (newExpanded.has(title)) {
+      newExpanded.delete(title);
+    } else {
+      newExpanded.add(title);
+    }
+    setExpandedSections(newExpanded);
+  };
   return (
     <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50" style={{
       background: 'linear-gradient(135deg, #0a0a0a 0%, #050505 50%, #0d0a15 100%)'
@@ -91,24 +104,33 @@ export function LandingPage() {
 
                   {section.title && section.title !== 'ABRAXAS MANIFESTO' && section.lines.length > 0 && (
                     <div className="rounded-lg border border-cyan-300/30 overflow-hidden bg-cyan-500/[0.04]">
-                      <div className="px-4 py-3 border-b border-cyan-300/20">
-                        <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
+                      <button
+                        onClick={() => toggleSection(section.title!)}
+                        className="w-full px-4 py-3 border-b border-cyan-300/20 flex items-center justify-between hover:bg-cyan-500/[0.06] transition"
+                      >
+                        <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase text-left">
                           {section.title}
                         </p>
-                      </div>
+                        <ChevronDown 
+                          size={18} 
+                          className={`flex-none text-cyan-300/70 transition-transform ${expandedSections.has(section.title) ? 'rotate-180' : ''}`}
+                        />
+                      </button>
                       
-                      <div className="space-y-2 p-4">
-                        {section.lines.map((line) => {
-                          if (line === '') {
-                            return <div key={Math.random()} className="h-2" />;
-                          }
-                          return (
-                            <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-3 py-2 text-sm leading-6 text-slate-200/92">
-                              {line}
-                            </div>
-                          );
-                        })}
-                      </div>
+                      {expandedSections.has(section.title) && (
+                        <div className="space-y-2 p-4 animate-in fade-in duration-200">
+                          {section.lines.map((line) => {
+                            if (line === '') {
+                              return <div key={Math.random()} className="h-2" />;
+                            }
+                            return (
+                              <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-3 py-2 text-sm leading-6 text-slate-200/92">
+                                {line}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   )}
 
