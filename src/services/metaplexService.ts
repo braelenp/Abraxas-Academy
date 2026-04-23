@@ -86,7 +86,6 @@ export class MetaplexNFTService {
 
       // Create the NFT using Metaplex SDK
       const { nft, response } = await this.metaplex.nfts().create({
-        owner,
         name: metadata.name,
         symbol: GENESIS_NFT_COLLECTION.symbol,
         uri: uploadResult, // Metadata URI
@@ -97,11 +96,13 @@ export class MetaplexNFTService {
         // isCollection: false,
       });
 
-      console.log('NFT Minted:', nft.mint.address.toString());
+      // Get mint address from the NFT object
+      const mintAddress = (nft as any).mint?.address || (nft as any).address;
+      console.log('NFT Minted:', mintAddress.toString());
 
       return {
         success: true,
-        mint: nft.mint.address,
+        mint: mintAddress as PublicKey,
         transaction: response.signature,
         memberNumber,
       };
@@ -140,7 +141,7 @@ export class MetaplexNFTService {
       }
 
       // Extract metadata
-      const memberNumber = genesisNFT.json?.attributes?.find(
+      const memberNumberRaw = genesisNFT.json?.attributes?.find(
         (attr: any) => attr.trait_type === 'Member Number'
       )?.value;
 
@@ -152,17 +153,23 @@ export class MetaplexNFTService {
         (attr: any) => attr.trait_type === 'Blessing'
       )?.value;
 
+      // Parse member number as number
+      const memberNumber = memberNumberRaw ? parseInt(String(memberNumberRaw), 10) : 0;
+
+      // Get mint address safely
+      const mintAddress = ((genesisNFT as any).mint?.address || (genesisNFT as any).address) as PublicKey;
+
       return {
-        mint: genesisNFT.mint.address,
+        mint: mintAddress,
         owner,
-        memberNumber: memberNumber || 0,
+        memberNumber,
         rune: rune || '',
         blessing: blessing || '',
-        isSovereignFew: memberNumber ? isSovereignFew(memberNumber) : false,
+        isSovereignFew: memberNumber > 0 ? isSovereignFew(memberNumber) : false,
         metadata: {
           name: genesisNFT.name,
           uri: genesisNFT.uri,
-          json: genesisNFT.json,
+          json: genesisNFT.json || undefined,
         },
       };
     } catch (error) {
