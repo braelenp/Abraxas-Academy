@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { academyModules, blessings, runes } from '../lib/data';
+import { useGenesisNFT } from '../hooks/useGenesisNFT';
 
 type ModuleProgress = {
   lessons: string[];
@@ -75,6 +76,10 @@ export function MembershipProvider({ children }: MembershipProviderProps) {
   const [isActivating, setIsActivating] = useState(false);
   const [submittedHomework, setSubmittedHomework] = useState<Set<string>>(new Set());
 
+  // Get Genesis NFT data
+  const { hasGenesisNFT, memberNumber: nftMemberNumber, memberRune: nftRune, memberBlessing: nftBlessing, isLoading: isNFTLoading } = useGenesisNFT();
+
+  // Load progress from storage
   useEffect(() => {
     try {
       const raw = localStorage.getItem(storageKey(publicKeyString));
@@ -84,18 +89,32 @@ export function MembershipProvider({ children }: MembershipProviderProps) {
     }
   }, [publicKeyString]);
 
+  // Check membership status - prioritize Genesis NFT, fallback to localStorage
   useEffect(() => {
     if (!publicKeyString) {
       setIsMember(false);
       return;
     }
 
+    // If they have a Genesis NFT, they're a member
+    if (hasGenesisNFT) {
+      setIsMember(true);
+      // Store in localStorage as backup
+      try {
+        localStorage.setItem(membershipKey(publicKeyString), 'active');
+      } catch {
+        // Ignore storage errors
+      }
+      return;
+    }
+
+    // Fallback to localStorage (for development/demo)
     try {
       setIsMember(localStorage.getItem(membershipKey(publicKeyString)) === 'active');
     } catch {
       setIsMember(false);
     }
-  }, [publicKeyString]);
+  }, [publicKeyString, hasGenesisNFT]);
 
   useEffect(() => {
     try {
@@ -105,11 +124,14 @@ export function MembershipProvider({ children }: MembershipProviderProps) {
     }
   }, [progress, publicKeyString]);
 
+  // Generate member data from NFT or fallback to hash-based
   const identitySeed = publicKeyString ?? 'guest';
   const hash = hashString(identitySeed);
-  const memberNumber = String(1000 + (hash % 9000));
-  const memberRune = runes[hash % runes.length];
-  const blessing = blessings[hash % blessings.length];
+  
+  // Use NFT data if member has Genesis NFT, otherwise use hash-based fallback
+  const memberNumber = nftMemberNumber ? String(nftMemberNumber) : String(1000 + (hash % 9000));
+  const memberRune = nftRune || runes[hash % runes.length];
+  const blessing = nftBlessing || blessings[hash % blessings.length];
 
   const completionRate = useMemo(() => {
     const totalTasks = academyModules.reduce((sum, module) => sum + module.lessons.length + 2, 0);
@@ -135,10 +157,13 @@ export function MembershipProvider({ children }: MembershipProviderProps) {
     }));
   };
 
+  // Get the mint function from the Genesis NFT hook
+  const { mintGenesisNFT, isMinting: isNFTMinting, error: nftError } = useGenesisNFT();
+
   const value: MembershipContextValue = {
     isConnected: connected,
     isMember,
-    isActivating,
+    isActivating: isActivating || isNFTMinting,
     walletAddress: publicKeyString,
     memberNumber,
     memberRune,
@@ -149,17 +174,40 @@ export function MembershipProvider({ children }: MembershipProviderProps) {
     submittedHomework,
     activateMembership: async () => {
       if (!publicKeyString) {
+        console.error('No wallet connected');
         return;
       }
+
       setIsActivating(true);
-      await new Promise((resolve) => window.setTimeout(resolve, 1400));
+
       try {
-        localStorage.setItem(membershipKey(publicKeyString), 'active');
-      } catch {
-        // Ignore storage failures and keep in-memory state.
+        // Attempt to mint the Genesis NFT
+        const mintResult = await mintGenesisNFT();
+
+        if (mintResult.success) {
+          // NFT minted successfully
+          console.log('Genesis NFT minted:', mintResult.mint?.toString());
+          // The isMember state will be updated automatically via the useGenesisNFT hook
+          setIsMember(true);
+        } else {
+          // Minting failed, but allow local activation for development
+          console.error('NFT minting failed:', mintResult.error);
+          // Fallback: allow membership via localStorage
+          localStorage.setItem(membershipKey(publicKeyString), 'active');
+          setIsMember(true);
+        }
+      } catch (error) {
+        console.error('Error during activation:', error);
+        // Fallback: allow membership via localStorage
+        try {
+          localStorage.setItem(membershipKey(publicKeyString), 'active');
+          setIsMember(true);
+        } catch {
+          // Ignore storage errors
+        }
+      } finally {
+        setIsActivating(false);
       }
-      setIsMember(true);
-      setIsActivating(false);
     },
     toggleLesson: (moduleId, lessonId) => {
       updateModule(moduleId, (current) => ({
