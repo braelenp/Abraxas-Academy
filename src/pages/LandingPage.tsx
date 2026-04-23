@@ -7,13 +7,16 @@ import { Card } from '../components/ui/card';
 
 export function LandingPage() {
   return (
-    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50 bg-slate-950">
-      <div className="flex items-center justify-between">
+    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50" style={{
+      background: 'linear-gradient(135deg, #0a0a0a 0%, #050505 50%, #0d0a15 100%)'
+    }}>
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0),rgba(0,0,0,0.8))]" />
+      <div className="relative z-10 flex items-center justify-between">
         <BrandLogo />
         <Badge className="border-violet-300/20 bg-violet-500/12 text-violet-100/80">Official Front End</Badge>
       </div>
 
-      <section className="relative mt-8 overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-black/55 px-5 py-7 shadow-[0_0_52px_rgba(153,69,255,0.14)] backdrop-blur-2xl">
+      <section className="relative z-10 mt-8 overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-black/55 px-5 py-7 shadow-[0_0_52px_rgba(153,69,255,0.14)] backdrop-blur-2xl">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(153,69,255,0.18),transparent_38%)]" />
         <div className="absolute -right-10 top-6 h-28 w-28 rounded-full border border-violet-300/20" />
         <div className="absolute left-4 top-4 h-16 w-16 rounded-full border border-cyan-300/20" />
@@ -88,42 +91,41 @@ export function LandingPage() {
                   )}
 
                   {section.title && section.title !== 'ABRAXAS MANIFESTO' && (
-                    <div className="text-center mb-3">
+                    <div className="mb-3 pl-0">
                       <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
                         {section.title}
                       </p>
                     </div>
                   )}
 
-                  <div className={`space-y-2 ${section.title && section.title !== 'ABRAXAS MANIFESTO' ? 'pl-4' : ''}`}>
-                    {section.lines.map((line) => {
-                      if (line === '') {
-                        return <div key={Math.random()} className="h-2" />;
-                      }
-                      return (
-                        <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-4 py-2 text-sm leading-6 text-slate-200/92">
-                          {line}
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {section.lines.length > 0 && (
+                    <div className={`space-y-2 ${section.title && section.title !== 'ABRAXAS MANIFESTO' ? 'pl-6 border-l-2 border-cyan-300/20' : ''}`}>
+                      {section.lines.map((line) => {
+                        if (line === '') {
+                          return <div key={Math.random()} className="h-2" />;
+                        }
+                        return (
+                          <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-4 py-2 text-sm leading-6 text-slate-200/92">
+                            {line}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               ));
             })()}
           </div>
 
-          <div className="mt-7 grid gap-3">
+          <div className="mt-7">
             <Link to="/join">
               <Button className="w-full">Join the Sovereign Regime</Button>
-            </Link>
-            <Link to="/app/academy">
-              <Button variant="secondary" className="w-full">Enter the Academy</Button>
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="mt-6 grid gap-4">
+      <section className="relative z-10 mt-6 grid gap-4">
         <Card>
           <Badge>Genesis NFT First</Badge>
           <h2 className="mt-4 text-xl font-semibold text-white">Membership is the key, not an afterthought.</h2>
