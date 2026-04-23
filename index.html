@@ -5,9 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050505" />
     <title>Abraxas Academy</title>
+    <script>
+      // Polyfill globals IMMEDIATELY before ANY module loads
+      if (typeof globalThis === 'undefined') {
+        window.globalThis = window;
+      }
+      if (typeof global === 'undefined') {
+        window.global = window;
+      }
+      // Ensure process exists before any module initialization
+      if (typeof process === 'undefined') {
+        window.process = {
+          env: {},
+          browser: true,
+          version: '',
+          versions: {},
+          on: () => {},
+          once: () => {},
+          off: () => {},
+          emit: () => {},
+          prependListener: () => {},
+          prependOnceListener: () => {},
+          removeListener: () => {},
+          removeAllListeners: () => {},
+          listeners: () => [],
+          listenerCount: () => 0,
+          eventNames: () => [],
+          setMaxListeners: () => {},
+          getMaxListeners: () => 10,
+          cwd: () => '/',
+          chdir: () => {},
+          umask: () => {},
+          nextTick: (cb) => setTimeout(cb, 0),
+          binding: () => ({}),
+        };
+      }
+      // Ensure Buffer exists
+      if (typeof Buffer === 'undefined') {
+        window.Buffer = {
+          isBuffer: () => false,
+          isEncoding: () => false,
+          byteLength: () => 0,
+          concat: () => new Uint8Array(),
+          alloc: () => new Uint8Array(),
+          allocUnsafe: () => new Uint8Array(),
+          from: () => new Uint8Array(),
+        };
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

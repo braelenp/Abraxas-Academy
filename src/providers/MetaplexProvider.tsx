@@ -1,9 +1,8 @@
 import { createContext, useContext, useMemo, ReactNode } from 'react';
 import { useConnection } from '@solana/wallet-adapter-react';
-import { Metaplex } from '@metaplex-foundation/js';
 
 interface MetaplexContextType {
-  metaplex: Metaplex | null;
+  metaplex: any;
   isInitialized: boolean;
   error: string | null;
 }
@@ -19,6 +18,8 @@ export function MetaplexProvider({ children }: { children: ReactNode }) {
     }
     
     try {
+      // Late-bind import to ensure polyfills are ready
+      const { Metaplex } = require('@metaplex-foundation/js') as typeof import('@metaplex-foundation/js');
       return {
         metaplex: new Metaplex(connection),
         isInitialized: true,
@@ -26,8 +27,7 @@ export function MetaplexProvider({ children }: { children: ReactNode }) {
       };
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : String(err);
-      console.warn('Metaplex initialization non-critical error (app will still work):', errorMsg);
-      // Don't crash - app can work without Metaplex
+      console.warn('Metaplex initialization error (app will still work):', errorMsg);
       return { metaplex: null, isInitialized: false, error: errorMsg };
     }
   }, [connection]);
@@ -39,7 +39,7 @@ export function MetaplexProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useMetaplex(): Metaplex | null {
+export function useMetaplex(): any {
   const context = useContext(MetaplexContext);
   if (context === undefined) {
     throw new Error('useMetaplex must be used within MetaplexProvider');

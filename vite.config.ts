@@ -1,8 +1,28 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Helper to inject polyfills into the entry chunk
+function polyfillPlugin() {
+  return {
+    name: 'polyfill-inject',
+    apply: 'build',
+    transform(code: string, id: string) {
+      // Inject into the entry module
+      if (id.includes('src/main.tsx')) {
+        const polyfill = `
+import './polyfills';
+`;
+        return {
+          code: polyfill + code,
+          map: null,
+        };
+      }
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), polyfillPlugin()],
   resolve: {
     alias: {
       process: 'process/browser',
