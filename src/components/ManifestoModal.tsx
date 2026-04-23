@@ -7,211 +7,44 @@ interface ManifestoModalProps {
 }
 
 const MANIFESTO_CONTENT = `
-ABRAXAS MANIFESTO
-The Sovereign Regime
+WELCOME TO ABRAXAS ACADEMY
 
-A capital formation engine disguised as a culture.
+You're now inside the sovereign chamber of culture and capital formation.
 
-MANIFESTO
+YOUR JOURNEY STARTS HERE
 
-Abraxas isn't DeFi.
-
-It's not RWA either.
-
-It's a capital formation engine disguised as a culture.
-
-2014 was the Young People Revolution.
-
-Community first. Money second. Ownership never existed.
-
-We fix that.
-
-THE SOVEREIGN REGIME
-
-We don't teach people how to trade crypto.
-
-We teach them how to generate real capital outside the system so they never have to touch what they've already built.
-
-No liquidation.
-
-No dependency.
-
-No begging for market conditions.
-
-You become the whale before the wealth transfer.
-
-THE FLOW (CLOSED LOOP)
-
-Education → Capital → Tokenization → Automation
-
-Not theory. A complete system.
-
-1. Learn the edge (Abraxas Academy)
-2. Produce fresh capital outside crypto
-3. Bridge it on-chain through La Casa NFTs
-4. Route it into Sophia Vaults
-5. The Species (AI agents) compound it continuously
-
-Human effort becomes machine persistence.
-
-TWO ASSETS. NO CONFUSION.
-
-Genesis NFT – Sovereign Regime Membership
-
-• Access to Abraxas Academy
-• Lifetime curriculum + Cadabra social feed
-• Abraxas ID card with unique rune + blessing
-• Baseline yields from the entire ecosystem
-
-La Casa NFT – Tokenization & Scaling
-
-• Bring real-world assets on-chain (real estate, watches, yachts, art, etc.)
-• Deposit into Sophia Vaults for personalized higher yields
-• Scale by acquiring more
-
-That's it.
-No tiers. No games.
-If you want more yield, you bring more assets.
-
-FIRST 100 COHORT – FOUNDING MEMBERS
-
-We are opening the doors to the first 100 Genesis NFT members — the inaugural cohort of the Sovereign Regime.
-
-These 100 will receive exclusive Sovereign Few founding-member perks:
-
-• Founding Member status permanently displayed on their Abraxas ID card
-• Special rune blessing — a unique, one-time generational rune tied to their entry
-• Higher baseline yield multiplier across the entire ecosystem (tokenization fees, vault performance, Raido bot profits)
-• Priority access to all IRL Miami events, private breakout sessions, and opportunity calls
-• Early access to new daughters/sons of the Regime and future asset classes
-• Lifetime recognition as the original 100 who helped birth the movement
-
-This cohort is limited, intentional, and elite. Once the first 100 are claimed, the next wave will have different (and likely higher) entry terms.
-
-ARCHITECTURE – TWO SURFACES, ONE SYSTEM
-
-Abraxas Academy (Education + Community)
-
-• Genesis NFT gated
-• Full 5-module curriculum with real trading edge
-• Progress tracking, homework, quizzes, badges
-• Cadabra social feed (trading setups + gaming clips)
-• Hybrid community: virtual opportunity calls + IRL Miami events and breakout sessions
-
-Abraxas Protocol (Tokenization + Automation)
-
-• La Casa Tokenization rails
-• Sophia Vaults + The Species AI agents
-• Yield dashboard and compounding
-• ABRA staking and governance layer
-Same environment. Same language. Same gravity.
-
-THE CURRICULUM – THE REAL EDGE
+The Academy is a 5-module curriculum designed to teach you the edge:
 
 Module 1 – Market Maker Method + Moving Averages
-(13/50/200/800 EMA)
+Learn to read liquidity patterns and confirm trends with the proven 13/50/200/800 EMA stack.
 
-Module 2 – TDI + 50Bounce Strategy (MBL, SFA, CTSFA, MBLC, MBLB patterns)
+Module 2 – TDI + 50Bounce Strategy
+Master momentum timing and identify high-conviction entry zones where retail hesitates.
 
 Module 3 – Tokenization & La Casa NFTs
+Bridge real-world assets on-chain. Turn property, watches, yachts, and art into operating capital.
 
 Module 4 – Sophia Vaults & The Species AI Agents
+Deploy capital into automated yield systems that compound 24/7 while you maintain full sovereignty.
 
 Module 5 – Sovereign Finance & Hardening Capital
+Protect what you've built. Write your capital constitution. Master the discipline of wealth.
 
-This is not theory. It is the proven framework that lets you generate capital outside crypto before you ever step foot on-chain.
+WHAT TO DO NOW
 
-COMMUNITY – THE SOVEREIGN REGIME
+1. Explore the Curriculum tab and begin Module 1
+2. Complete lessons, homework, and quizzes
+3. Earn badges as you progress
+4. Join the Cadabra social feed to connect with other members
+5. Attend weekly opportunity calls and IRL events in Miami
 
-Community isn't Discord.
-It's coordination.
+REMEMBER
 
-• Weekly opportunity calls
-• Live trading execution
-• Physical presence in homes and private sessions
-• Digital scales. IRL converts.
+This isn't theory. It's execution.
+Community doesn't scroll faster than markets.
+Your discipline compounds faster than algorithms.
 
-This is modern YPR energy — upgraded with real edge and on-chain ownership.
-
-TOKEN & YIELD LOGIC
-
-Genesis NFT pays you for being early to the Regime.
-La Casa NFT pays you for bringing assets into it.
-ABRA exists as the optional equity layer — not the crutch.
-
-Revenue hits first. Token comes second.
-No forced buying. No exit liquidity games.
-
-WHY THIS WORKS
-
-It doesn't rely on crypto to work.
-If markets go flat, the system still produces.
-If markets run, it accelerates.
-That asymmetry is the edge.
-
-SOVEREIGN FEW – LEADERSHIP LINEAGE
-
-Ac3y
-
-Built from a multi-layered Japanese, Native American, and Jewish Germanic bloodline — fishermen, survivors of Fukushima, rocket engineers, and chemical pioneers who understood systems, resilience, and turning raw resources into legacy.
-
-I architect the frameworks, the education, the edge, and the infrastructure that compounds outcomes — not effort.
-
-Solitude breeds clarity. Clarity breeds progress. Progress breeds success. I engineer the systems that make financial freedom inevitable for those ready to claim it.
-
-Pablo Retro
-
-I dedicate my life to increasing human earning power.
-
-Not through motivation. Through systems.
-
-Investment management that compounds outcomes, not effort.
-
-Built from a Creole Mexican Native lineage where resourcefulness wasn't optional — it was survival.
-
-Financial freedom isn't aspirational, it's engineered.
-
-I build the infrastructure that makes it inevitable.
-
-Neo
-
-French lineage — ancestors who fought to the death for freedom and were willing to cut the king's head off if needed. A warrior spirit forged in revolution.
-
-My mission is to help any member of the Abraxas Species reach financial freedom. My purpose is to fulfill my potential by affecting the masses in the most positive and profound way.
-
-"You only become great to the degree to which you are able to lose yourself in something bigger, grander, and better than yourself."
-
-Nick
-
-From the DeFranco family — one of the first families of the first 100% Italian boroughs in the United States in 1912 in Roseto, Pa. A 16-year fire fighter with a finance background who now owns and operates a towing company. As the only Gen X'er in the group, I bring the older common knowledge mixed with the new way of thinking — grounded, resourceful, and built for real-world execution.
-
-My purpose is service through strength and stability. I bring the operational backbone, the discipline of emergency response, and the practical finance and logistics mindset that turns vision into infrastructure that lasts. I stand for the Sovereign Regime by making sure the systems we build are not only visionary but executable, resilient, and rooted in the real world.
-
-Swiss
-
-Swiss-built — precision, discipline, and control. Son of an Italian — grit, pride, and resilience run deep. Fluent in four languages: Italian, German, French, and Romansh (spoken by only 10,000–30,000 people worldwide).
-
-Border Guard by profession — trained to read people, assess risk in seconds, and act without hesitation. Real-world pressure forged me: responsibility, structure, and consequences are second nature.
-
-In crypto: no hype, no emotion — only positioning, patience, and timing. I don't follow trends — I anticipate them. I don't chase the masses — I move before they arrive.
-
-I build for the long run. For legacy. For those who depend on me.
-
-THE CALL
-
-Abraxas is not a product.
-
-It's a regime.
-
-And regimes don't compete.
-
-They absorb.
-
-The hackathon brought the right humans together.
-
-Now we build far beyond it.
-
-Welcome to the Sovereign Regime.
+The regime waits for no one. Move accordingly.
 
 Welcome to the next degree.
 `;
@@ -241,8 +74,8 @@ export function ManifestoModal({ isOpen, onClose }: ManifestoModalProps) {
         {/* Header */}
         <div className="sticky top-0 z-10 flex flex-none items-center justify-between border-b border-cyan-300/15 bg-black/90 px-6 py-4 backdrop-blur-xl">
           <div>
-            <p className="text-xs uppercase tracking-[0.32em] text-cyan-200/70">Welcome</p>
-            <h2 className="mt-1 text-lg font-bold text-cyan-100">The Sovereign Regime</h2>
+            <p className="text-xs uppercase tracking-[0.32em] text-cyan-200/70">Getting Started</p>
+            <h2 className="mt-1 text-lg font-bold text-cyan-100">Your Academy Journey</h2>
           </div>
           <button
             onClick={() => {
