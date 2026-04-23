@@ -1,4 +1,5 @@
 import express from 'express';
+import { fetchNFTsByWallet, fetchNFTByMint, fetchGenesisNFTsByWallet } from './services/metaplexServerService';
 
 /**
  * NFT Operations API Routes
@@ -10,51 +11,51 @@ const router = express.Router();
 /**
  * POST /api/nft/mint
  * Mint a new Genesis or La Casa NFT
- * Body: { walletAddress, nftType: 'genesis' | 'lacasa', metadata: {...} }
+ * NOTE: Minting is handled client-side via the Phantom wallet and useGenesisNFT hook
+ * This endpoint is kept for documentation purposes and potential future admin-initiated minting
  */
 router.post('/mint', async (req, res) => {
   try {
-    const { walletAddress, nftType, metadata } = req.body;
-
-    if (!walletAddress || !nftType || !metadata) {
-      return res.status(400).json({
-        error: 'Missing required fields: walletAddress, nftType, metadata',
-      });
-    }
-
-    // TODO: Implement Metaplex minting logic
-    // This will handle transaction creation and submission via the Metaplex JS SDK
-
-    res.json({
-      success: true,
-      message: `${nftType} NFT minting initiated`,
-      walletAddress,
-      nftType,
-      // Will return transaction signature when implemented
+    // Minting should happen client-side for better security and UX
+    res.status(400).json({
+      error: 'Minting should be initiated client-side via the wallet adapter. Use the Join page to mint your Genesis NFT.',
+      note: 'For admin-initiated minting, additional authentication and authorization is required.',
     });
   } catch (error) {
     console.error('NFT minting error:', error);
-    res.status(500).json({ error: 'Failed to mint NFT' });
+    res.status(500).json({ error: 'Failed to process minting request' });
   }
 });
 
 /**
  * GET /api/nft/collection/:walletAddress
  * Fetch all NFTs owned by a wallet
+ * Query params: ?type=genesis (optional, filters to Genesis NFTs only)
  */
 router.get('/collection/:walletAddress', async (req, res) => {
   try {
     const { walletAddress } = req.params;
+    const { type } = req.query;
 
-    // TODO: Implement Metaplex collection fetching
-    // This will use Metaplex to fetch NFTs by collection or wallet
+    if (!walletAddress) {
+      return res.status(400).json({ error: 'Wallet address required' });
+    }
 
-    res.json({
-      success: true,
-      walletAddress,
-      nfts: [],
-      // Will return array of NFTs when implemented
-    });
+    let result;
+
+    if (type === 'genesis') {
+      // Fetch Genesis NFTs only
+      result = await fetchGenesisNFTsByWallet(walletAddress);
+    } else {
+      // Fetch all NFTs
+      result = await fetchNFTsByWallet(walletAddress);
+    }
+
+    if (result.success) {
+      return res.json(result);
+    } else {
+      return res.status(400).json(result);
+    }
   } catch (error) {
     console.error('NFT collection fetch error:', error);
     res.status(500).json({ error: 'Failed to fetch NFT collection' });
@@ -73,15 +74,13 @@ router.get('/:mint', async (req, res) => {
       return res.status(400).json({ error: 'Mint address required' });
     }
 
-    // TODO: Implement Metaplex metadata fetching
-    // This will fetch the full metadata for a specific NFT
+    const result = await fetchNFTByMint(mint);
 
-    res.json({
-      success: true,
-      mint,
-      metadata: {},
-      // Will return NFT metadata when implemented
-    });
+    if (result.success) {
+      return res.json(result);
+    } else {
+      return res.status(400).json(result);
+    }
   } catch (error) {
     console.error('NFT metadata fetch error:', error);
     res.status(500).json({ error: 'Failed to fetch NFT metadata' });
@@ -90,12 +89,14 @@ router.get('/:mint', async (req, res) => {
 
 /**
  * POST /api/nft/update-metadata/:mint
- * Update NFT metadata (requires wallet authorization)
+ * Update NFT metadata (admin only - requires authorization)
+ * NOTE: Metadata updates typically require the update authority keypair
+ * This endpoint would need proper authentication/authorization in production
  */
 router.post('/update-metadata/:mint', async (req, res) => {
   try {
     const { mint } = req.params;
-    const { metadata } = req.body;
+    const { metadata, authorization } = req.body;
 
     if (!mint || !metadata) {
       return res.status(400).json({
@@ -103,13 +104,12 @@ router.post('/update-metadata/:mint', async (req, res) => {
       });
     }
 
-    // TODO: Implement Metaplex metadata update logic
-    // This will update NFT metadata via the Metaplex program
+    // TODO: Implement proper authentication/authorization
+    // In production, verify the request is from an authorized admin
 
-    res.json({
-      success: true,
-      message: 'NFT metadata updated',
-      mint,
+    res.status(501).json({
+      error: 'Metadata updates require authorization. This endpoint is not yet implemented.',
+      note: 'Metadata updates need the update authority keypair and proper security controls.',
     });
   } catch (error) {
     console.error('NFT metadata update error:', error);
