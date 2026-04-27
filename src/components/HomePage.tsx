@@ -167,7 +167,7 @@ export function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(148,163,184,0.04),transparent_50%)]" />
         <div className="relative space-y-2">
           <p className="text-[9px] uppercase tracking-[0.2em] text-slate-400/70">Later Phase</p>
-          <h3 className="text-sm font-semibold text-slate-100">La Casa Tokenization</h3>
+          <h3 className="text-sm font-semibold text-slate-100">Black Card Tokenization</h3>
           <p className="text-[9px] leading-4 text-slate-400">
             Assets become on-chain operating objects. Sophia Vaults. The Species. Sovereign yields.
           </p>

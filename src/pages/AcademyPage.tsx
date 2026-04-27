@@ -35,10 +35,10 @@ export function AcademyPage() {
   return (
     <div className="space-y-4">
       <Card>
-        <Badge>Five-Module Curriculum</Badge>
-        <h1 className="mt-4 text-2xl font-semibold text-white">Baby Billionaire Trading Strategy + The Sovereign Path</h1>
+        <Badge>Genesis Founding Curriculum</Badge>
+        <h1 className="mt-4 text-2xl font-semibold text-white">Abraxas Sovereign Regime Academy</h1>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          This is where the regime teaches execution. Track lessons, finish homework, pass quizzes, and forge completion badges that live on your Abraxas ID card.
+          The first 100 founding members of the Sovereign Regime build real capital outside the system, bridge it on-chain through Black Card tokenization, and compound it autonomously through Sophia Vaults and The Species AI agents. Education → Capital → Tokenization → Automation. We build the people, and let the people build the business.
         </p>
         <div className="mt-5">
           <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-cyan-200/70">
@@ -51,10 +51,10 @@ export function AcademyPage() {
 
       {!isMember ? (
         <Card className="border-violet-300/20 bg-violet-500/8">
-          <Badge className="border-amber-300/20 bg-amber-500/10 text-amber-100/80">Token Gated</Badge>
-          <h2 className="mt-4 text-xl font-semibold text-white">Genesis membership unlocks the full chamber.</h2>
+          <Badge className="border-amber-300/20 bg-amber-500/10 text-amber-100/80">Genesis NFT Required</Badge>
+          <h2 className="mt-4 text-xl font-semibold text-white">Founding Member Access: The First 100 Cohort</h2>
           <p className="mt-3 text-sm leading-6 text-slate-300">
-            Module 1 is unlocked for preview. Explore the first curriculum to see how the regime teaches. Genesis NFT required to submit homework, take quizzes, and earn badges on all modules.
+            Module 1 is unlocked for preview. Explore how the Sovereign Regime teaches the trading edge that generates capital outside the system. Genesis NFT required to complete all modules, submit homework, take quizzes, and earn Sovereign badges. The first 100 founding members receive lifetime recognition as the original cohort who built this regime. Limited. Intentional. Elite.
           </p>
         </Card>
       ) : null}

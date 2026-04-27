@@ -21,7 +21,7 @@ Learn to read liquidity patterns and confirm trends with the proven 13/50/200/80
 Module 2 – TDI + 50Bounce Strategy
 Master momentum timing and identify high-conviction entry zones where retail hesitates.
 
-Module 3 – Tokenization & La Casa NFTs
+Module 3 – Tokenization & Black Card NFTs
 Bridge real-world assets on-chain. Turn property, watches, yachts, and art into operating capital.
 
 Module 4 – Sophia Vaults & The Species AI Agents

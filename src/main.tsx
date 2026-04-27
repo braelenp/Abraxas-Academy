@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { SolanaProvider } from './providers/SolanaProvider';
 import { MetaplexProvider } from './providers/MetaplexProvider';
 import { MembershipProvider } from './providers/MembershipProvider';
@@ -14,18 +15,20 @@ import '@solana/wallet-adapter-react-ui/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <SolanaProvider>
-        <MetaplexProvider>
-          <MembershipProvider>
-            <ManifestoProvider>
-              <OrionProvider>
-                <App />
-              </OrionProvider>
-            </ManifestoProvider>
-          </MembershipProvider>
-        </MetaplexProvider>
-      </SolanaProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <SolanaProvider>
+          <MetaplexProvider>
+            <MembershipProvider>
+              <ManifestoProvider>
+                <OrionProvider>
+                  <App />
+                </OrionProvider>
+              </ManifestoProvider>
+            </MembershipProvider>
+          </MetaplexProvider>
+        </SolanaProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
 );

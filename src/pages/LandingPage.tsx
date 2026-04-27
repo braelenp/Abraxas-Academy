@@ -38,7 +38,7 @@ export function LandingPage() {
             Join the chamber where culture becomes capital formation.
           </h1>
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Buy the Genesis NFT. Enter the Academy. Receive your Abraxas ID card, your baseline ecosystem yields, your rune, and your blessing. Later, scale assets through La Casa tokenization inside the main dApp.
+            Buy the Genesis NFT. Enter the Academy. Receive your Abraxas ID card, your baseline ecosystem yields, your rune, and your blessing. Later, scale assets through Black Card tokenization inside the main dApp.
           </p>
 
           <div className="mt-6 space-y-2">

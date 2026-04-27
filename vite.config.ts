@@ -13,9 +13,6 @@ export default defineConfig({
     global: 'globalThis',
   },
   optimizeDeps: {
-    esbuildOptions: {
-      target: 'esnext',
-    },
     include: [
       'process/browser',
       'buffer',

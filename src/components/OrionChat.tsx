@@ -14,7 +14,7 @@ const ORION_SYSTEM_PROMPT = `You are Orion, the Abraxas Academy AI assistant. Yo
 Your role:
 - Guide members through the Academy curriculum (5 modules: Market Maker Method, TDI + 50Bounce, Tokenization, Sophia Vaults, Sovereign Finance)
 - Explain trading strategies, setups, and discipline
-- Help members understand La Casa tokenization, Sophia Vaults, and the Species AI agents
+- Help members understand Black Card tokenization, Sophia Vaults, and the Species AI agents
 - Discuss the Sovereign Regime philosophy and capital formation
 - Support members' journey from Academy to main Abraxas dApp
 - Encourage completion of lessons, homework, quizzes, and badge collection
@@ -25,7 +25,7 @@ Tone: Direct, sophisticated, elite. You speak to winners who understand capital,
 You have access to:
 - Five-module curriculum details
 - Trading methodologies and signals
-- Tokenization and La Casa framework
+- Tokenization and Black Card framework
 - Sophia Vaults and automation concepts
 - First 100 Genesis cohort benefits
 - Academy progress tracking concepts
@@ -90,19 +90,19 @@ export function OrionChat() {
 
     // Curriculum questions
     if (lower.includes('module') || lower.includes('curriculum')) {
-      return 'The Academy spans five modules:\n\n1. Market Maker Method + Moving Averages - Read liquidity, anchor bias, discipline\n2. TDI + 50Bounce - Time entries where retail hesitates\n3. Tokenization & La Casa NFTs - Translate assets into operating objects\n4. Sophia Vaults & Species - Automation and AI agents\n5. Sovereign Finance - Hardening capital outside the system\n\nEach module includes lessons, homework, quizzes, and badges. Which module interests you?';
+      return 'The Academy spans five modules:\n\n1. Market Maker Method + Moving Averages - Read liquidity, anchor bias, discipline\n2. TDI + 50Bounce - Time entries where retail hesitates\n3. Tokenization & Black Card NFTs - Translate assets into operating objects\n4. Sophia Vaults & Species - Automation and AI agents\n5. Sovereign Finance - Hardening capital outside the system\n\nEach module includes lessons, homework, quizzes, and badges. Which module interests you?';
     }
 
     if (lower.includes('genesis') || lower.includes('first 100')) {
       return 'Genesis NFT unlocks lifetime access to the Academy, your Abraxas ID card with rune and blessing, baseline ecosystem yields, and Cadabra social feed access. Only 100 Genesis NFTs will mint—this is the founding cohort. Once doors close, the next wave launches inside the main Abraxas dApp. You\'re either in or you witness it happen.';
     }
 
-    if (lower.includes('la casa') || lower.includes('tokenization')) {
-      return 'La Casa NFTs are tokenized real-world assets on-chain. Your real estate, watches, yachts, art—anything of value becomes an operating object. Deposit into Sophia Vaults for personalized yields. This is capital formation. This is the Sovereign Path. Start in Genesis, learn at Academy scale, then move to main dApp.';
+    if (lower.includes('black card') || lower.includes('tokenization')) {
+      return 'Black Card NFTs are tokenized real-world assets on-chain. Your real estate, watches, yachts, art—anything of value becomes an operating object. Deposit into Sophia Vaults for personalized yields. This is capital formation. This is the Sovereign Path. Start in Genesis, learn at Academy scale, then move to main dApp.';
     }
 
     if (lower.includes('sophia') || lower.includes('vault')) {
-      return 'Sophia Vaults are autonomous agents that manage La Casa NFTs on your behalf. They read market structure, execute operations, and compound yields continuously. The Species (AI agents) do the work while you sleep. This is the future of capital automation inside the regime.';
+      return 'Sophia Vaults are autonomous agents that manage Black Card NFTs on your behalf. They read market structure, execute operations, and compound yields continuously. The Species (AI agents) do the work while you sleep. This is the future of capital automation inside the regime.';
     }
 
     if (lower.includes('trading') || lower.includes('strategy')) {
@@ -122,7 +122,7 @@ export function OrionChat() {
     }
 
     if (lower.includes('help') || lower.includes('question')) {
-      return 'I can help with:\n- Five-module curriculum breakdown\n- Trading strategies and the Baby Billionaire Method\n- Genesis NFT and First 100 cohort details\n- La Casa tokenization and Sophia Vaults\n- Abraxas ID card, runes, and blessings\n- Cadabra social feed\n- Progress tracking and badges\n- Sovereign Regime philosophy\n\nWhat would you like to explore?';
+      return 'I can help with:\n- Five-module curriculum breakdown\n- Trading strategies and the Baby Billionaire Method\n- Genesis NFT and First 100 cohort details\n- Black Card tokenization and Sophia Vaults\n- Abraxas ID card, runes, and blessings\n- Cadabra social feed\n- Progress tracking and badges\n- Sovereign Regime philosophy\n\nWhat would you like to explore?';
     }
 
     // Default response
