@@ -16,7 +16,7 @@ export function BrandLogo({ className, compact = false }: BrandLogoProps) {
       {!compact ? (
         <div>
           <p className="text-[10px] uppercase tracking-[0.38em] text-cyan-200/70">Sovereign Regime</p>
-          <p className="text-sm font-semibold tracking-[0.2em] text-white">ABRAXAS ACADEMY</p>
+          <p className="text-sm font-semibold tracking-[0.2em] text-white">BUILD THE PEOPLE</p>
         </div>
       ) : null}
     </div>

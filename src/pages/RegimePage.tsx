@@ -19,7 +19,7 @@ export function RegimePage() {
             The Capital Formation Engine
           </h1>
           <p className="mt-4 text-sm leading-7 text-slate-200">
-            Genesis was the Academy. Abraxas dApp is where capital scales. La Casa tokenization. Species AI Agents. Sovereign yields. The full regime.
+            Genesis was the Academy. Sovereign Regime dApp is where capital scales. La Casa tokenization. Species AI Agents. Sovereign yields. The full regime.
           </p>
         </div>
       </section>
@@ -134,14 +134,14 @@ export function RegimePage() {
         <div className="relative space-y-4">
           <h3 className="text-base font-semibold text-cyan-100">Ready for the Main Platform?</h3>
           <p className="text-xs leading-6 text-slate-400">
-            Once you have Genesis, the main Abraxas dApp becomes your operating theatre. Tokenize assets. Deploy agents. Scale capital.
+            Once you have Genesis, the main Sovereign Regime dApp becomes your operating theatre. Tokenize assets. Deploy agents. Scale capital.
           </p>
           <button
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/40 bg-cyan-500/15 px-4 py-3 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-500/25"
-            onClick={() => window.open('https://abraxas-ten.vercel.app/', '_blank')}
+            onClick={() => window.open('https://abraxas-tokenization-engine.vercel.app/', '_blank')}
           >
             <ExternalLink className="h-4 w-4" />
-            Enter Abraxas dApp
+            Enter Tokenization Engine
           </button>
         </div>
       </section>

@@ -116,7 +116,7 @@ export function HomePage() {
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-semibold text-violet-100">Abraxas ID</p>
+                <p className="text-xs font-semibold text-violet-100">Sovereign Regime ID</p>
                 <p className="mt-0.5 text-[9px] leading-4 text-slate-400">
                   Rune, number, blessing. Proof of Genesis membership.
                 </p>

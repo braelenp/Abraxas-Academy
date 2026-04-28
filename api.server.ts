@@ -47,7 +47,7 @@ app.post('/api/submit-homework', async (req, res) => {
           ` : ''}
 
           <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #00f5ff; font-size: 12px; color: #808080;">
-            <p>This is an automated submission from Abraxas Academy.</p>
+            <p>This is an automated submission from Sovereign Regime Academy.</p>
           </div>
         </div>
       </div>
@@ -55,8 +55,8 @@ app.post('/api/submit-homework', async (req, res) => {
 
     // Send email using Resend
     const emailResponse = await resend.emails.send({
-      from: 'Abraxas Academy <noreply@abraxas-academy.vercel.app>',
-      to: 'abraxasacademy@gmail.com',
+      from: 'Sovereign Regime <noreply@sovereign-regime.vercel.app>',
+      to: 'sovereignregime@gmail.com',
       subject: `[Homework] ${moduleName} - ${walletAddress.slice(0, 8)}...`,
       html: emailHtml,
     });
@@ -82,6 +82,6 @@ app.post('/api/submit-homework', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🎓 Abraxas Academy API running on http://localhost:${PORT}`);
+  console.log(`🎓 Sovereign Regime Academy API running on http://localhost:${PORT}`);
   console.log(`📧 Resend API Key: ${process.env.RESEND_API_KEY ? '✓ Loaded' : '✗ Missing'}`);
 });

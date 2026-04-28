@@ -10,7 +10,7 @@ export function ProfilePage() {
   return (
     <div className="space-y-4">
       <Card>
-        <Badge>Abraxas ID Card</Badge>
+        <Badge>Sovereign Regime ID</Badge>
         <div className="mt-4 rounded-[1.9rem] border border-cyan-300/20 bg-[linear-gradient(150deg,rgba(153,69,255,0.24),rgba(5,5,5,0.94),rgba(0,245,255,0.16))] p-5">
           <div className="flex items-start justify-between gap-4">
             <div>

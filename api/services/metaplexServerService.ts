@@ -102,7 +102,7 @@ export async function fetchGenesisNFTsByWallet(walletAddress: string) {
     // Filter for Genesis NFTs
     const genesisNFTs = nfts.filter(
       (nft) =>
-        nft.name.includes('Abraxas Genesis') ||
+        nft.name.includes('Sovereign Genesis') ||
         (nft.json as any)?.attributes?.some?.(
           (attr: any) => attr.trait_type === 'Status' && attr.value === 'Genesis'
         )

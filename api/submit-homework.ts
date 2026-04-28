@@ -56,7 +56,7 @@ export default async function handler(
           ` : ''}
 
           <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #00f5ff; font-size: 12px; color: #808080;">
-            <p>This is an automated submission from Abraxas Academy.</p>
+            <p>This is an automated submission from Sovereign Regime Academy.</p>
             <p>Total submissions so far: ${submissions.length}</p>
           </div>
         </div>
@@ -65,8 +65,8 @@ export default async function handler(
 
     // Send email using Resend
     await resend.emails.send({
-      from: 'Abraxas Academy <noreply@abraxas-academy.vercel.app>',
-      to: 'abraxasacademy@gmail.com',
+      from: 'Sovereign Regime <noreply@sovereign-regime.vercel.app>',
+      to: 'sovereignregime@gmail.com',
       subject: `[Homework] ${moduleName} - ${walletAddress.slice(0, 8)}...`,
       html: emailHtml,
     });

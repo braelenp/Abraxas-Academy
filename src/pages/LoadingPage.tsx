@@ -6,7 +6,7 @@ const bootMessages = [
   '> LOADING_CADABRA_TRANSMISSIONS...',
   '> SYNCING_SPECIES_PROTOCOLS...',
   '> HARDENING_CAPITAL_CONTEXT...',
-  '> [SYSTEM_READY] ABRAXAS_ACADEMY',
+  '> [SYSTEM_READY] SOVEREIGN_REGIME_INITIALIZED',
 ];
 
 export function LoadingPage() {
@@ -70,7 +70,7 @@ export function LoadingPage() {
         </div>
 
         <div className="mt-6 text-center">
-          <p className="text-xs uppercase tracking-[0.34em] text-cyan-200/70">Abraxas Academy</p>
+          <p className="text-xs uppercase tracking-[0.34em] text-cyan-200/70">Sovereign Regime</p>
           <h1 className="mt-3 text-3xl font-semibold text-white">Welcome to the next degree</h1>
           <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-violet-200/60">Sovereign Regime Chamber</p>
         </div>

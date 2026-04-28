@@ -7,7 +7,7 @@ interface ManifestoModalProps {
 }
 
 const MANIFESTO_CONTENT = `
-WELCOME TO ABRAXAS ACADEMY
+WELCOME TO SOVEREIGN REGIME
 
 You're now inside the sovereign chamber of culture and capital formation.
 
@@ -96,10 +96,10 @@ export function ManifestoModal({ isOpen, onClose }: ManifestoModalProps) {
               if (!trimmed) return <div key={idx} className="h-2" />;
 
               // Title styling
-              if (trimmed === 'ABRAXAS') {
+              if (trimmed === 'SOVEREIGN REGIME') {
                 return (
                   <div key={idx} className="pt-4 text-center">
-                    <p className="text-3xl font-bold text-cyan-100">ABRAXAS</p>
+                    <p className="text-3xl font-bold text-cyan-100">SOVEREIGN REGIME</p>
                   </div>
                 );
               }

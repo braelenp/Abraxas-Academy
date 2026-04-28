@@ -1,14 +1,14 @@
 /**
  * Genesis NFT Configuration & Metadata
- * Abraxas Academy - Sovereign Regime Membership
+ * Sovereign Regime - Elite Membership
  */
 
 // ─── COLLECTION PARAMETERS ────────────────────────────────────────────────
 
 export const GENESIS_NFT_COLLECTION = {
-  name: 'Abraxas Genesis',
-  symbol: 'ABRA-GEN',
-  description: 'Founding member of the Abraxas Sovereign Regime. Access to Academy, lifetime yields, and the path to capital formation.',
+  name: 'Sovereign Genesis',
+  symbol: 'SOV-GEN',
+  description: 'Founding member of the Sovereign Regime. Access to Academy, lifetime yields, and the path to capital formation.',
   royaltyBps: 500, // 5% royalties
   sellerFeeBasisPoints: 500,
 };
@@ -136,8 +136,8 @@ export function generateGenesisMetadata(
   const cohortNumber = isFoundingMember ? `First 100 - Member #${memberNumber}` : `Member #${memberNumber}`;
 
   return {
-    name: `Abraxas Genesis ${cohortStatus}`,
-    description: `${cohortStatus} of the Abraxas Sovereign Regime. Lifetime access to Academy, baseline ecosystem yields, and the path to capital formation. ${memberBlessing}.`,
+    name: `Sovereign Genesis ${cohortStatus}`,
+    description: `${cohortStatus} of the Sovereign Regime. Lifetime access to Academy, baseline ecosystem yields, and the path to capital formation. ${memberBlessing}.`,
     image: 'https://abraxas-academy.vercel.app/assets/nft-preview.mp4',
     external_url: 'https://abraxas-academy.vercel.app',
     attributes: [
@@ -271,7 +271,7 @@ export function isGenesisNFT(metadata: any, collectionMint?: string): boolean {
   }
   
   // Check if NFT name indicates it's a Genesis NFT
-  if (metadata?.name?.includes('Abraxas Genesis')) {
+  if (metadata?.name?.includes('Sovereign Genesis')) {
     return true;
   }
   

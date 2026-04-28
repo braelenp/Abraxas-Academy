@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { to: '/app/academy', label: 'Academy', rune: 'ᚱ' },
+  { to: '/app/tokenization', label: 'Tokenize', rune: '⬚' },
   { to: '/app/join', label: 'Genesis', rune: '☍' },
   { to: '/app/cadabra', label: 'Cadabra', rune: '✦' },
   { to: '/app/profile', label: 'ID', rune: '𓂀' },

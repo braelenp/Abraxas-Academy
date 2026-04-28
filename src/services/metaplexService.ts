@@ -145,7 +145,7 @@ export class MetaplexNFTService {
       // Filter for Genesis NFTs (by name or symbol)
       const genesisNFT = nfts.find(
         (nft: any) =>
-          nft.name.includes('Abraxas Genesis') ||
+          nft.name.includes('Sovereign Genesis') ||
           (nft.json?.attributes?.some(
             (attr: any) => attr.trait_type === 'Status' && attr.value === 'Genesis'
           )) ||

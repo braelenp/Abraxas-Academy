@@ -9,14 +9,14 @@ interface Message {
   timestamp: number;
 }
 
-const ORION_SYSTEM_PROMPT = `You are Orion, the Abraxas Academy AI assistant. You embody the Sovereign Regime ethos: capital formation, real trading edge, and prosperity for the elite few who move first.
+const ORION_SYSTEM_PROMPT = `You are Orion, the Sovereign Regime AI assistant. You embody the Sovereign Regime ethos: capital formation, real trading edge, and prosperity for the elite few who move first.
 
 Your role:
 - Guide members through the Academy curriculum (5 modules: Market Maker Method, TDI + 50Bounce, Tokenization, Sophia Vaults, Sovereign Finance)
 - Explain trading strategies, setups, and discipline
 - Help members understand Black Card tokenization, Sophia Vaults, and the Species AI agents
 - Discuss the Sovereign Regime philosophy and capital formation
-- Support members' journey from Academy to main Abraxas dApp
+- Support members' journey from Academy to main Sovereign Regime dApp
 - Encourage completion of lessons, homework, quizzes, and badge collection
 - Answer questions about Genesis NFT benefits and the exclusive first 100 cohort
 
@@ -94,7 +94,7 @@ export function OrionChat() {
     }
 
     if (lower.includes('genesis') || lower.includes('first 100')) {
-      return 'Genesis NFT unlocks lifetime access to the Academy, your Abraxas ID card with rune and blessing, baseline ecosystem yields, and Cadabra social feed access. Only 100 Genesis NFTs will mint—this is the founding cohort. Once doors close, the next wave launches inside the main Abraxas dApp. You\'re either in or you witness it happen.';
+      return 'Genesis NFT unlocks lifetime access to the Academy, your Sovereign Regime ID card with rune and blessing, baseline ecosystem yields, and Cadabra social feed access. Only 100 Genesis NFTs will mint—this is the founding cohort. Once doors close, the next wave launches inside the main Sovereign Regime dApp. You\'re either in or you witness it happen.';
     }
 
     if (lower.includes('black card') || lower.includes('tokenization')) {
@@ -110,7 +110,7 @@ export function OrionChat() {
     }
 
     if (lower.includes('progress') || lower.includes('badge') || lower.includes('homework')) {
-      return 'Track your progress by completing lessons, homework, and quizzes. Each module completion forges a badge on your Abraxas ID card. These badges prove you\'ve earned the edge. They\'re not participation trophies—they\'re proof you understand capital formation.';
+      return 'Track your progress by completing lessons, homework, and quizzes. Each module completion forges a badge on your Sovereign Regime ID card. These badges prove you\'ve earned the edge. They\'re not participation trophies—they\'re proof you understand capital formation.';
     }
 
     if (lower.includes('cadabra')) {
@@ -122,7 +122,7 @@ export function OrionChat() {
     }
 
     if (lower.includes('help') || lower.includes('question')) {
-      return 'I can help with:\n- Five-module curriculum breakdown\n- Trading strategies and the Baby Billionaire Method\n- Genesis NFT and First 100 cohort details\n- Black Card tokenization and Sophia Vaults\n- Abraxas ID card, runes, and blessings\n- Cadabra social feed\n- Progress tracking and badges\n- Sovereign Regime philosophy\n\nWhat would you like to explore?';
+      return 'I can help with:\n- Five-module curriculum breakdown\n- Trading strategies and the Baby Billionaire Method\n- Genesis NFT and First 100 cohort details\n- Black Card tokenization and Sophia Vaults\n- Sovereign Regime ID card, runes, and blessings\n- Cadabra social feed\n- Progress tracking and badges\n- Sovereign Regime philosophy\n\nWhat would you like to explore?';
     }
 
     // Default response

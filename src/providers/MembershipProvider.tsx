@@ -57,11 +57,11 @@ function createEmptyProgress(): ProgressRecord {
 }
 
 function storageKey(publicKey: string | null) {
-  return publicKey ? `abraxas-academy:${publicKey}` : 'abraxas-academy:guest';
+  return publicKey ? `sovereign-regime:${publicKey}` : 'sovereign-regime:guest';
 }
 
 function membershipKey(publicKey: string) {
-  return `abraxas-genesis:${publicKey}`;
+  return `sovereign-regime:${publicKey}`;
 }
 
 type MembershipProviderProps = {

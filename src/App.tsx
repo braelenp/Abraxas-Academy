@@ -9,6 +9,7 @@ import { OrionChat } from './components/OrionChat';
 import { useManifesto } from './providers/ManifestoProvider';
 import { AcademyPage } from './pages/AcademyPage';
 import { CadabraPage } from './pages/CadabraPage';
+import { TokenizationPage } from './pages/TokenizationPage';
 import { LoadingPage } from './pages/LoadingPage';
 import { LandingPage } from './pages/LandingPage';
 import { JoinPage } from './pages/JoinPage';
@@ -46,6 +47,7 @@ function AppShell() {
           <Route index element={<Navigate to="home" replace />} />
           <Route path="home" element={<HomeTabPage />} />
           <Route path="curriculum" element={<AcademyPage />} />
+          <Route path="tokenization" element={<TokenizationPage />} />
           <Route path="cadabra" element={<CadabraPage />} />
           <Route path="nfts" element={<NFTPage />} />
           <Route path="profile" element={<ProfilePage />} />

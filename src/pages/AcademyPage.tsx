@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { academyModules } from '../lib/data';
 import { useMembership } from '../providers/MembershipProvider';
 import { Badge } from '../components/ui/badge';
@@ -35,26 +36,56 @@ export function AcademyPage() {
   return (
     <div className="space-y-4">
       <Card>
-        <Badge>Genesis Founding Curriculum</Badge>
-        <h1 className="mt-4 text-2xl font-semibold text-white">Abraxas Sovereign Regime Academy</h1>
+        <Badge>Genesis - First 100 Founding Cohort</Badge>
+        <h1 className="mt-4 text-2xl font-semibold text-white">Sovereign Regime Academy</h1>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          The first 100 founding members of the Sovereign Regime build real capital outside the system, bridge it on-chain through Black Card tokenization, and compound it autonomously through Sophia Vaults and The Species AI agents. Education → Capital → Tokenization → Automation. We build the people, and let the people build the business.
+          The first 100 founding members learn the complete edge: from trading discipline that generates capital outside crypto, to Black Card tokenization, to autonomous compounding through Sophia Vaults and The Species AI agents. Education → Capital → Tokenization → Automation. We build the people, and let the people build the business.
         </p>
         <div className="mt-5">
           <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-cyan-200/70">
-            <span>Total progress</span>
+            <span>Academy Progress</span>
             <span>{completionRate}%</span>
           </div>
           <div className="mt-3"><Progress value={completionRate} /></div>
         </div>
       </Card>
 
+      {isMember && (
+        <Link to="/app/tokenization">
+          <Card className="border-cyan-300/30 bg-cyan-500/8 hover:bg-cyan-500/12 transition cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div>
+                <Badge className="border-cyan-300/30 bg-cyan-500/15 text-cyan-100/80 text-[10px]">Next Step</Badge>
+                <h3 className="mt-2 text-base font-semibold text-white">Ready to Tokenize?</h3>
+                <p className="mt-1 text-xs text-slate-400">Convert your trading profits into sovereign on-chain assets via the Tokenization Engine.</p>
+              </div>
+              <ChevronRight className="h-5 w-5 text-cyan-300 flex-shrink-0" />
+            </div>
+          </Card>
+        </Link>
+      )}
+
       {!isMember ? (
         <Card className="border-violet-300/20 bg-violet-500/8">
           <Badge className="border-amber-300/20 bg-amber-500/10 text-amber-100/80">Genesis NFT Required</Badge>
-          <h2 className="mt-4 text-xl font-semibold text-white">Founding Member Access: The First 100 Cohort</h2>
+          <h2 className="mt-4 text-xl font-semibold text-white">Join the First 100: Sovereign Regime Founding Members</h2>
           <p className="mt-3 text-sm leading-6 text-slate-300">
-            Module 1 is unlocked for preview. Explore how the Sovereign Regime teaches the trading edge that generates capital outside the system. Genesis NFT required to complete all modules, submit homework, take quizzes, and earn Sovereign badges. The first 100 founding members receive lifetime recognition as the original cohort who built this regime. Limited. Intentional. Elite.
+            Module 1 is unlocked for preview. Explore the trading foundation that builds real capital outside the system. Full curriculum access requires Genesis NFT membership. Choose your commitment:
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border border-cyan-300/20 bg-cyan-500/5 p-3">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-100">Global Leader</p>
+              <p className="mt-2 text-lg font-bold text-white">$497</p>
+              <p className="mt-1 text-xs text-slate-400">3x founder yield share • Leadership status • IRL priority access</p>
+            </div>
+            <div className="rounded-lg border border-violet-300/20 bg-violet-500/5 p-3">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-100">Member</p>
+              <p className="mt-2 text-lg font-bold text-white">$247</p>
+              <p className="mt-1 text-xs text-slate-400">Full curriculum • Cadabra access • Founding cohort</p>
+            </div>
+          </div>
+          <p className="mt-4 text-xs leading-5 text-slate-400">
+            Once the first 100 are claimed, the next wave will have different (and likely higher) entry terms. This cohort is limited. Intentional. Elite.
           </p>
         </Card>
       ) : null}

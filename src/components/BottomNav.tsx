@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Zap, User, Crown } from 'lucide-react';
+import { Home, BookOpen, Zap, User, Crown, Coins } from 'lucide-react';
 
 const navItems = [
   { to: '/app/home', label: 'Home', icon: Home, rune: '⌂' },
   { to: '/app/curriculum', label: 'Curriculum', icon: BookOpen, rune: 'ᚱ' },
+  { to: '/app/tokenization', label: 'Tokenize', icon: Coins, rune: '⬚' },
   { to: '/app/cadabra', label: 'Cadabra', icon: Zap, rune: '✦' },
   { to: '/app/profile', label: 'Profile', icon: User, rune: '𓂀' },
   { to: '/app/regime', label: 'Regime', icon: Crown, rune: '👑' },

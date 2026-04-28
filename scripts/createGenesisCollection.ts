@@ -15,9 +15,9 @@ const IS_DEVNET = RPC_URL.includes('devnet');
 const BUNDLR_URL = IS_DEVNET ? 'https://devnet.bundlr.network' : 'https://node1.bundlr.network';
 
 // Collection metadata
-const COLLECTION_NAME = 'Abraxas Genesis';
+const COLLECTION_NAME = 'Sovereign Genesis';
 const COLLECTION_SYMBOL = 'ABRA-GEN';
-const COLLECTION_DESCRIPTION = 'The Genesis collection of the Abraxas Sovereign Regime. 100 founding members with lifetime Academy access, baseline yields, and the path to capital formation.';
+const COLLECTION_DESCRIPTION = 'The Genesis collection of the Sovereign Regime. 100 founding members with lifetime Academy access, baseline yields, and the path to capital formation.';
 const COLLECTION_IMAGE = 'https://abraxas-academy.vercel.app/assets/nft-preview.mp4';
 
 async function createGenesisCollection() {
