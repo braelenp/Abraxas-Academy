@@ -248,7 +248,7 @@ export function LandingPage() {
             })()}
           </div>
 
-          <div className="mt-7 space-y-2">
+          <div className="mt-7 space-y-4">
             <Link to="/app/home">
               <Button className="w-full">Join the Sovereign Regime</Button>
             </Link>

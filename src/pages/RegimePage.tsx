@@ -19,7 +19,7 @@ export function RegimePage() {
             The Capital Formation Engine
           </h1>
           <p className="mt-4 text-sm leading-7 text-slate-200">
-            Genesis was the Academy. Sovereign Regime dApp is where capital scales. La Casa tokenization. Species AI Agents. Sovereign yields. The full regime.
+            Genesis was the Academy. Sovereign Regime dApp is where capital scales. BlackBox NFT tokenization. Species AI Agents. Sovereign yields. The full regime.
           </p>
         </div>
       </section>
@@ -47,22 +47,22 @@ export function RegimePage() {
             </li>
             <li className="flex gap-2">
               <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-amber-400" />
-              <span>Lead the wealth transfer through La Casa NFTs</span>
+              <span>Lead the wealth transfer through BlackBox NFTs (on-chain Black Cards)</span>
             </li>
           </ul>
         </div>
       </section>
 
-      {/* La Casa Tokenization */}
+      {/* BlackBox NFT Tokenization */}
       <section className="space-y-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-cyan-200">La Casa Tokenization</h3>
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-cyan-200">BlackBox NFT Tokenization</h3>
 
         <Card className="border-cyan-300/15 bg-black/40 backdrop-blur-sm">
           <div className="space-y-3 p-4">
             <p className="text-xs uppercase tracking-widest text-cyan-300">Phase 1</p>
             <p className="text-base font-semibold text-white">Assets Become Objects</p>
             <p className="text-xs leading-5 text-slate-400">
-              Your trading positions, venture theses, and capital allocations tokenize as La Casa NFTs. On-chain operating objects that prove ownership and stake.
+              Your trading positions, venture theses, and capital allocations tokenize as BlackBox NFTs (on-chain Black Cards). Operating objects that prove ownership and stake.
             </p>
           </div>
         </Card>
@@ -72,7 +72,7 @@ export function RegimePage() {
             <p className="text-xs uppercase tracking-widest text-violet-300">Phase 2</p>
             <p className="text-base font-semibold text-white">Leverage + Distribution</p>
             <p className="text-xs leading-5 text-slate-400">
-              La Casa NFTs enable transparent leverage, fractional yield stacking, and direct member distribution without intermediaries.
+              BlackBox NFTs enable transparent leverage, fractional yield stacking, and direct member distribution without intermediaries.
             </p>
           </div>
         </Card>
@@ -82,7 +82,7 @@ export function RegimePage() {
             <p className="text-xs uppercase tracking-widest text-red-300">Phase 3</p>
             <p className="text-base font-semibold text-white">Sovereign Finance</p>
             <p className="text-xs leading-5 text-slate-400">
-              Once La Casa proves out, full Sovereign Finance: hardening capital against systemic risk, cross-cohort leverage, and regime-scale yields.
+              Once BlackBox NFT tokenization proves out, full Sovereign Finance: hardening capital against systemic risk, cross-cohort leverage, and regime-scale yields.
             </p>
           </div>
         </Card>
@@ -95,7 +95,7 @@ export function RegimePage() {
           <p className="text-xs uppercase tracking-[0.28em] text-indigo-300">The Species Layer</p>
           <h2 className="text-lg font-semibold text-indigo-100">Sophia Vaults & AI Agents</h2>
           <p className="text-xs leading-6 text-slate-400">
-            Sophia Vaults are autonomous agents that manage capital on behalf of members. They read market structure, execute La Casa operations, and report yields back to the chamber. The first true on-chain operating entities.
+            Sophia Vaults are autonomous agents that manage capital on behalf of members. They read market structure, execute BlackBox NFT operations, and report yields back to the chamber. The first true on-chain operating entities.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export function RegimePage() {
             <div>
               <p className="text-sm font-semibold text-amber-100">Step 2: Mint in the main dApp</p>
               <p className="mt-1 text-xs text-slate-400">
-                Access full platform. Tokenize your first assets as La Casa NFTs. Deploy with Sophia Vaults.
+                Access full platform. Tokenize your first assets as BlackBox NFTs. Deploy with Sophia Vaults.
               </p>
             </div>
             <div className="h-px bg-gradient-to-r from-cyan-500/20 to-transparent" />
