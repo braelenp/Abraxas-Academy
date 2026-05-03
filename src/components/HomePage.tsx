@@ -37,12 +37,12 @@ export function HomePage() {
           </div>
 
           <div className="mt-4 flex gap-2">
-            <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-7 font-medium px-6">
+            <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-cyan-300/30 bg-cyan-500/15 px-4 py-2 text-center text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-7 font-medium leading-5 inline-block">
               Buy Genesis
-            </Button>
-            <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-7 font-medium px-6">
+            </a>
+            <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-violet-300/30 bg-violet-500/15 px-4 py-2 text-center text-[11px] text-violet-100 hover:bg-violet-500/22 h-7 font-medium leading-5 inline-block">
               Preview Genesis
-            </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -188,12 +188,12 @@ export function HomePage() {
 
       {/* Buy Genesis CTA */}
       <div className="flex gap-2">
-        <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="flex-1 rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-9 font-medium">
+        <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-cyan-300/30 bg-cyan-500/15 px-4 py-3 text-center text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-9 font-medium leading-7 inline-block">
           Buy Genesis
-        </Button>
-        <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="flex-1 rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-9 font-medium">
+        </a>
+        <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-violet-300/30 bg-violet-500/15 px-4 py-3 text-center text-[11px] text-violet-100 hover:bg-violet-500/22 h-9 font-medium leading-7 inline-block">
           Preview Genesis
-        </Button>
+        </a>
       </div>
     </div>
   );
