@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { ExternalLink, Lock } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { useMembership } from '../providers/MembershipProvider';
+import { EarlyAdopterModal } from '../components/EarlyAdopterModal';
 
 export function RegimePage() {
   const { isMember } = useMembership();
+  const [showEarlyAdopterModal, setShowEarlyAdopterModal] = useState(false);
 
   return (
     <div className="relative space-y-6 pb-2">
@@ -21,6 +24,12 @@ export function RegimePage() {
           <p className="mt-4 text-sm leading-7 text-slate-200">
             Genesis was the Academy. Sovereign Regime dApp is where capital scales. BlackBox NFT tokenization. Species AI Agents. Sovereign yields. The full regime.
           </p>
+          <button
+            onClick={() => setShowEarlyAdopterModal(true)}
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-amber-300/60 bg-gradient-to-r from-amber-500/25 to-violet-600/20 px-6 py-3 text-sm font-bold tracking-wide text-amber-100 shadow-[0_0_32px_rgba(217,119,6,0.3)] transition hover:from-amber-500/35 hover:to-violet-600/30 hover:shadow-[0_0_48px_rgba(217,119,6,0.4)] active:scale-95"
+          >
+            Claim Your Spot
+          </button>
         </div>
       </section>
 
@@ -157,6 +166,9 @@ export function RegimePage() {
           </div>
         </section>
       )}
+
+      {/* Early Adopter Modal */}
+      <EarlyAdopterModal isOpen={showEarlyAdopterModal} onClose={() => setShowEarlyAdopterModal(false)} />
     </div>
   );
 }

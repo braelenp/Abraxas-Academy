@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AppHeader } from './components/AppHeader';
+import { AppFooter } from './components/AppFooter';
 import { BottomNav } from './components/BottomNav';
 import { ChamberBackground } from './components/ChamberBackground';
 import { ManifestoModal } from './components/ManifestoModal';
@@ -42,7 +43,7 @@ function AppShell() {
         <p className="text-[10px] uppercase tracking-[0.26em] text-violet-100/72">Genesis unlocks Academy, Cadabra, ID, and baseline ecosystem yields.</p>
       </div>
 
-      <main ref={contentRef} className="flex-1 overflow-y-auto px-4 py-4 pb-40">
+      <main ref={contentRef} className="flex-1 overflow-y-auto px-4 py-4">
         <Routes>
           <Route index element={<Navigate to="home" replace />} />
           <Route path="home" element={<HomeTabPage />} />
@@ -55,6 +56,8 @@ function AppShell() {
           <Route path="*" element={<Navigate to="home" replace />} />
         </Routes>
       </main>
+
+      {location.pathname.startsWith('/app') && <AppFooter />}
 
       <div className="fixed bottom-0 left-1/2 z-40 w-full max-w-md -translate-x-1/2 transform">
         <BottomNav />

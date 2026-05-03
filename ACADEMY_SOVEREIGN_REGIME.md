@@ -1,51 +1,79 @@
-# Abraxas Sovereign Regime Academy
-## The Founding Curriculum for the First 100
+# Sovereign Regime
+## The Escape Velocity
 
 ---
 
-## The Movement
+## The Philosophy
 
-**Abraxas Sovereign Regime** is not a trading platform. It's not a DeFi protocol. It's a capital formation engine disguised as a culture, built by and for the first 100 founding members who understand that real wealth grows outside hype.
+**We do not ask for permission. We do not wait for the system to catch up. We build the parallel economy that renders the old one obsolete.**
 
-### The Philosophy
+The fiat world is a slow erosion machine. Every second your capital sits in dollars, it loses value to inflation, taxes, and hidden dilution.
 
-**"We build the people, and let the people build the business."**
+Centralized platforms extract, control, and gatekeep. Legacy finance sells you the illusion of safety while quietly bleeding your future.
 
-The Sovereign Regime is powered exclusively by word-of-mouth and genuine networking. No hype. No paid ads. No marketing noise. Only exceptional humans who generate capital, bridge it to on-chain systems, and compound it through automation.
-
-Growth happens through relationships. Capital flows through action. Yield emerges from sovereignty.
+**The Sovereign Regime is not a DeFi app. It is not an RWA project. It is capital formation disguised as culture.**
 
 ---
 
-## The Leadership
+## Core Tenet
 
-The Sovereign Regime was born from the vision of a small group who refused to play the game by someone else's rules.
+**"We build the people. The people build the business."**
+
+We do not chase hype. We do not rely on ads. We move through word of mouth, real relationships, and unbreakable results.
+
+---
+
+## The Six Components
+
+**Masters NFT** — Your permanent on-chain Master Card. The first 100 only. 15 SOL. Lifetime access to the Regime. Your sovereign identity etched into the ledger.
+
+**BlackBox NFT** — Your on-chain Black Card. Tokenize any real-world asset (real estate, watches, jets, art, music rights, carbon credits, invoices, or your own brand). No lawyers. No middlemen. Instant, immutable ownership.
+
+**Sophia Vaults** — Intelligent capital containers. Your tokenized assets go here. They are not passive. They are alive.
+
+**The Species** — Autonomous AI agents (Raido, Tide, Circuit, King AI, and the rest). They work 24/7. They monitor, compound, de-risk, and grow your holdings while you live your life.
+
+**ALLURE** — The native yield layer. Passive, sovereign income generated from the entire ecosystem.
+
+**Sovereign Spatial Protocol** — The un-killable backbone. Terrestrial AirNode mesh + celestial orbital relay + biological state persistence. Your data, your lore, your digital twin — secured beyond any single point of failure.
+
+---
+
+## The Regime Flow
+
+You generate capital outside the system first.
+
+You harden it on-chain.
+
+You let intelligent agents compound it forever.
+
+---
+
+## Leadership
 
 ### Founder
-- **Acey** (@Ac3yway) — Architect of the regimen. Forged the trading edge, imagined the tokenization layer, and held the vision when it seemed impossible.
+- **Acey** (@cryptoac3y) — Architect of the regime. Forged the vision. Imagined the escape velocity.
 
 ### Co-Founders
-- **Neo** — Orchestrator of the on-chain infrastructure. Built the pipes that make sovereignty executable.
-- **Chris** — Capital architect. Understood how real assets move to blockchain and why it matters.
+- **Neo** — Orchestrator of the on-chain infrastructure. Built the backbone that makes sovereignty executable.
+- **Chris** — Capital architect. Understood how real assets become on-chain operating objects.
 
 ### Global Leaders
-- **Swiss** — Community commander. Builds the bonds between the first 100. IRL presence. Real relationships.
-- **Nick** — Protocol deep-dive and ecosystem orchestration.
-
-Together, they created a system where the first 100 get special recognition: **Founding Member status** permanently displayed on your Abraxas ID card, unique rune blessings, higher baseline yield multipliers, and lifetime recognition as the original cohort who helped birth the movement.
+- **Swiss** — Community orchestrator. Builds real relationships at scale.
+- **Nick** — Protocol deep-dive and ecosystem architecture.
 
 ---
 
 ## How It Works: The Complete System
 
 ```
-EDUCATION → CAPITAL → TOKENIZATION → AUTOMATION
+GENERATE CAPITAL → HARDEN ON-CHAIN → COMPOUND AUTONOMOUSLY
 
-1. Learn the Edge (Abraxas Academy)
-2. Produce Fresh Capital Outside Crypto
-3. Bridge It On-Chain Through Black Card NFTs
-4. Route It Into Sophia Vaults
-5. The Species (AI Agents) Compound It Continuously
+1. Generate Fresh Capital Outside Crypto
+2. Bridge It On-Chain Through BlackBox NFTs
+3. Route It Into Sophia Vaults
+4. The Species AI Agents Compound It 24/7
+5. ALLURE Yield Layer Rewards Your Sovereignty
 ```
 
 ### The Two Assets

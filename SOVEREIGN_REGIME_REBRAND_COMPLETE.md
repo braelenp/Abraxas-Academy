@@ -32,7 +32,7 @@ The entire Abraxas Academy section has been fully rebranded to the **Abraxas Sov
 ### 3. ✅ Team & Leadership
 
 **Added to Manifesto:**
-- **Founder:** Acey (@Ac3yway) — Architect of the regimen
+- **Founder:** Acey (@cryptoac3y) — Architect of the regimen
 - **Co-Founders:** Neo & Chris — Infrastructure and capital architecture
 - **Global Leaders:** Swiss & Nick — Community and protocol orchestration
 

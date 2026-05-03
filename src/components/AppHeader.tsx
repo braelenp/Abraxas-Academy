@@ -1,5 +1,6 @@
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { Info } from 'lucide-react';
+import { Info, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { BrandLogo } from './BrandLogo';
 import { useMembership } from '../providers/MembershipProvider';
 import { useManifesto } from '../providers/ManifestoProvider';
@@ -11,7 +12,12 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-30 flex-none border-b border-cyan-300/10 bg-black/80 px-3 py-4 backdrop-blur-xl">
       <div className="flex items-center justify-between gap-2">
-        <BrandLogo compact={false} />
+        <div className="flex items-center gap-2">
+          <BrandLogo compact={false} />
+          <Link to="/" className="flex-none rounded-lg bg-purple-500/10 p-1.5 text-purple-300/70 transition hover:bg-purple-500/16 hover:text-purple-300" title="Return to Landing Page">
+            <ExternalLink className="h-3.5 w-3.5" />
+          </Link>
+        </div>
         <div className="flex items-center gap-1.5">
           <button
             onClick={openManifesto}

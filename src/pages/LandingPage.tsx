@@ -1,131 +1,186 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, X } from 'lucide-react';
-import { manifestoLines } from '../lib/data';
+import { ChevronDown, X, ExternalLink } from 'lucide-react';
+import {
+  manifestoLines,
+  sovereignLifestyleManifesto,
+  sovereignLifestyleSlideshow,
+  digitalTwinManifesto,
+  digitalTwinSlideshow,
+} from '../lib/data';
 import { BrandLogo } from '../components/BrandLogo';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
+import { CosmicBackground } from '../components/CosmicBackground';
+import { Slideshow } from '../components/Slideshow';
+
+// Add subtle glow effect styles
+const glitchStyles = `
+  @keyframes subtleGlow {
+    0%, 100% {
+      text-shadow: 0 0 20px rgba(153, 69, 255, 0.4), 0 0 40px rgba(153, 69, 255, 0.2);
+    }
+    50% {
+      text-shadow: 0 0 30px rgba(153, 69, 255, 0.6), 0 0 60px rgba(153, 69, 255, 0.3);
+    }
+  }
+
+  @keyframes pulsingGlow {
+    0%, 100% {
+      text-shadow: 0 0 20px rgba(153, 69, 255, 0.6), 0 0 40px rgba(153, 69, 255, 0.4), 0 0 60px rgba(153, 69, 255, 0.2);
+      filter: brightness(1);
+    }
+    50% {
+      text-shadow: 0 0 40px rgba(153, 69, 255, 1), 0 0 60px rgba(153, 69, 255, 0.8), 0 0 80px rgba(153, 69, 255, 0.4);
+      filter: brightness(1.1);
+    }
+  }
+
+  .glitch-title {
+    animation: subtleGlow 4s ease-in-out infinite;
+  }
+
+  .pulsing-glow {
+    animation: pulsingGlow 2.5s ease-in-out infinite;
+    font-weight: 900;
+  }
+`;
 
 const WHITEPAPER_CONTENT = `Sovereign Regime Whitepaper
-Version 1.0 – April 2026
-Led by Founder Acey (@Ac3yway)
+Version 2.0 – May 2026
+Led by Founder Acey (@cryptoac3y)
 
 1. EXECUTIVE SUMMARY
-The Sovereign Regime is a private, sovereign community and infrastructure layer on Solana designed for the real wealth transfer.
 
-We do not sell hype. We do not chase trends. We build the people, and the people build the business.
+The Sovereign Regime is the escape velocity.
 
-Our model is simple and closed-loop:
-• Generate capital outside of crypto using a proven trading edge
-• Tokenize real-world assets into BlackBox NFTs (the on-chain Black Card)
-• Place those assets into intelligent Sophia Vaults managed by The Species — a family of autonomous AI agents
-• Earn compounded yields in ALLURE, our native stablecoin, while retaining full ownership of your assets
+We do not ask for permission.
+We do not wait for the system to catch up.
+We build the parallel economy that renders the old one obsolete.
 
-Entry is through the Genesis NFT (first 100 cohort only).
+The fiat world is a slow erosion machine. Every second your capital sits in dollars, it loses value to inflation, taxes, and hidden dilution.
 
-Everything runs parallel to your current life — zero extra time required.
+Centralized platforms extract, control, and gatekeep. Legacy finance sells you the illusion of safety while quietly bleeding your future.
 
-This is not another DeFi project.
-This is a sovereign regime built for those who want to own their value and participate in the wealth transfer without becoming dependent on it.
+The Sovereign Regime is not a product. It is not another DeFi app or RWA project.
 
-2. VISION & PHILOSOPHY
-We believe the greatest leverage in this cycle is not found in chasing the next token — it is found in building sovereign systems that outlast market cycles.
+This is capital formation disguised as culture.
 
-Core Philosophy
-"We build the people. The people build the business."
-We do not advertise. We do not beg for attention. Growth happens through word-of-mouth among serious individuals who recognize the opportunity and choose to participate.
+2. THE SIX COMPONENTS
 
-Our edge is not secret. It is disciplined execution of proven trading frameworks combined with institutional-grade on-chain infrastructure (BlackBox NFT tokenization + Sophia Vaults + The Species AI agents).
+Masters NFT – Your permanent on-chain Master Card. The first 100 only. 15 SOL. Lifetime access to the Regime. This is not a ticket. It is your sovereign identity etched into the ledger.
 
-We exist to create a parallel economy where participants:
-• Keep full ownership of their assets
-• Harden their capital against inflation and tax erosion
-• Compound value through intelligent automation
-• Build generational wealth without selling their time or soul
+BlackBox NFT – Your on-chain Black Card. Tokenize any real-world asset — real estate, watches, jets, art, music rights, carbon credits, invoices, or your own brand and network. No lawyers. No middlemen. Instant, immutable ownership.
 
-3. THE PROBLEM
-Most people in crypto are still playing the old game:
-• Chasing hype tokens
-• Relying on centralized exchanges and custodians
-• Exposing capital to single points of failure (hacks, freezes, rugs)
-• Lacking real education or infrastructure to turn trading profits into lasting wealth
+Sophia Vaults – Intelligent capital containers. Your tokenized assets go here. They are not passive. They are alive.
 
-Even sophisticated participants often miss the bigger picture: the real wealth transfer is not just about holding tokens — it is about owning the rails that move value in the new economy.
+The Species – Autonomous AI agents (Raido, Tide, Circuit, King AI, and the rest). They work 24/7. They monitor, compound, de-risk, and grow your holdings while you live your life.
 
-Traditional finance is slow, expensive, and permissioned.
-Most DeFi is fast but still speculative and fragile.
-We solve both by creating a sovereign middle path.
+ALLURE – The native yield layer. Passive, sovereign income generated from the entire ecosystem.
 
-4. THE SOVEREIGN REGIME SOLUTION
-The Sovereign Regime is a complete ecosystem consisting of four integrated layers:
+Sovereign Spatial Protocol – The un-killable backbone. Terrestrial AirNode mesh + celestial orbital relay + biological state persistence. Your data, your lore, your digital twin — secured beyond any single point of failure.
 
-Layer 1 – Academy
-Proven trading curriculum (Market Maker Method, 50Bounce, TDI, multi-timeframe confirmation) taught in a structured, results-oriented format.
+3. OUR PHILOSOPHY
 
-Participants learn to generate consistent capital outside of crypto so they never have to liquidate or risk their tokenized assets.
+We build the people.
+The people build the business.
 
-Layer 2 – BlackBox NFT (The On-Chain Black Card)
-The gateway for tokenizing real-world assets (real estate fractions, luxury watches, art, yachts, private jets, collectibles, and more).
+We do not chase hype. We do not rely on ads. We move through word of mouth, real relationships, and unbreakable results.
 
-Each BlackBox NFT represents verifiable ownership and serves as the secure container for your asset in the Sophia Vault system.
+4. THE REGIME FLOW
 
-Layer 3 – Sophia Vaults + The Species
-Intelligent, autonomous AI agents (Raido, Tide, Circuit, King AI, and others) that actively manage tokenized assets 24/7.
+You generate capital outside the system first.
+You harden it on-chain.
+You let intelligent agents compound it forever.
 
-They handle rebalancing, yield optimization, de-risking, and compounding — all while you retain full ownership.
+5. WHY NOW
 
-Layer 4 – ALLURE Stablecoin
-Our native, over-collateralized stablecoin used for yields, liquidity, and silent capital movement. Stakeable and designed for stability and deflationary mechanics through ecosystem activity.
+The wealth transfer is accelerating. Institutions are moving onto Solana. The window for early, sovereign participation is open — but it will not stay open forever.
 
-5. HOW IT WORKS – THE USER JOURNEY
-Onboard → Purchase Genesis NFT (first 100 cohort only)
-Learn → Complete Academy curriculum and develop trading edge
-Generate → Create capital outside of crypto using the edge
-Tokenize → Convert real-world assets into BlackBox NFTs
-Vault → Deposit into Sophia Vaults
-Compound → Let The Species AI agents manage and grow value
-Retain & Scale → Keep ownership, earn ALLURE yields, repeat
+We do not fight the old system. We outpace it.
 
-The entire process runs parallel to your current life. No full-time commitment required.
+6. CALL TO ACTION
 
-6. COHORT STRUCTURE (FIRST 100 ONLY)
-• Global Leader Package – $497 Higher profit share on referrals, priority access, direct mentorship, leadership perks.
-• Member Package – $247 Full Academy access, curriculum, community, and pathway to everything else.
+The Regime is already here.
 
-30-Day Money-Back Guarantee
-If your life does not change in the first 30 days, you get every penny back — no questions asked.
+The only question is whether you step in now… or watch from the outside.
 
-7. TOKEN & ECONOMIC DESIGN
-• Genesis NFT — Limited first-cohort access + baseline benefits
-• BlackBox NFT — The actual tokenization vehicle for real assets (stakeable into Sophia Vaults)
-• ALLURE — The native stablecoin used for yields and liquidity (stakeable, deflationary mechanics via ecosystem activity)
+Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol
 
-No forced token purchases for users. The focus remains on real asset ownership and intelligent compounding.
-
-8. TEAM
-Founder – Acey (@Ac3yway)
-Co-Founders – Neo & Chris
-Global Leaders – Swiss & Nick
-All decisions are made with long-term sovereignty and community ownership in mind.
-
-9. WHY NOW
-The wealth transfer is accelerating. Institutions are moving onto Solana. Tokenization infrastructure is being built at breakneck speed. The window for early, sovereign participation is open — but it will not stay open forever.
-
-We are not here to speculate.
-We are here to own the rails.
-
-10. CALL TO ACTION
-The first 100 spots are being closed personally by the founder.
-
-If you are serious about participating in the real wealth transfer without selling your time or becoming dependent on market hype, the Sovereign Regime is open to you.
-We build the people. The people build the business.
-
-Ready to begin?`;
+We do not ask.
+We do not wait.
+We build.`;;
 
 export function LandingPage() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-  const [showWhitepaper, setShowWhitepaper] = useState(false);
+  const [showManifestoModal, setShowManifestoModal] = useState<'regime' | 'lifestyle' | 'digital-twin' | null>(null);
+  const [showWhitepaperModal, setShowWhitepaperModal] = useState(false);
+
+  const WHITEPAPER_CONTENT = `Sovereign Regime Whitepaper
+Version 2.0 – May 2026
+Led by Founder Acey (@cryptoac3y)
+
+1. EXECUTIVE SUMMARY
+
+The Sovereign Regime is the escape velocity.
+
+We do not ask for permission.
+We do not wait for the system to catch up.
+We build the parallel economy that renders the old one obsolete.
+
+The fiat world is a slow erosion machine. Every second your capital sits in dollars, it loses value to inflation, taxes, and hidden dilution.
+
+Centralized platforms extract, control, and gatekeep. Legacy finance sells you the illusion of safety while quietly bleeding your future.
+
+The Sovereign Regime is not a product. It is not another DeFi app or RWA project.
+
+This is capital formation disguised as culture.
+
+2. THE SIX COMPONENTS
+
+Masters NFT – Your permanent on-chain Master Card. The first 100 only. 15 SOL. Lifetime access to the Regime. This is not a ticket. It is your sovereign identity etched into the ledger.
+
+BlackBox NFT – Your on-chain Black Card. Tokenize any real-world asset — real estate, watches, jets, art, music rights, carbon credits, invoices, or your own brand and network. No lawyers. No middlemen. Instant, immutable ownership.
+
+Sophia Vaults – Intelligent capital containers. Your tokenized assets go here. They are not passive. They are alive.
+
+The Species – Autonomous AI agents (Raido, Tide, Circuit, King AI, and the rest). They work 24/7. They monitor, compound, de-risk, and grow your holdings while you live your life.
+
+ALLURE – The native yield layer. Passive, sovereign income generated from the entire ecosystem.
+
+Sovereign Spatial Protocol – The un-killable backbone. Terrestrial AirNode mesh + celestial orbital relay + biological state persistence. Your data, your lore, your digital twin — secured beyond any single point of failure.
+
+3. OUR PHILOSOPHY
+
+We build the people.
+The people build the business.
+
+We do not chase hype. We do not rely on ads. We move through word of mouth, real relationships, and unbreakable results.
+
+4. THE REGIME FLOW
+
+You generate capital outside the system first.
+You harden it on-chain.
+You let intelligent agents compound it forever.
+
+5. WHY NOW
+
+The wealth transfer is accelerating. Institutions are moving onto Solana. The window for early, sovereign participation is open — but it will not stay open forever.
+
+We do not fight the old system. We outpace it.
+
+6. CALL TO ACTION
+
+The Regime is already here.
+
+The only question is whether you step in now… or watch from the outside.
+
+Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol
+
+We do not ask.
+We do not wait.
+We build.`;
 
   const toggleSection = (title: string) => {
     const newExpanded = new Set(expandedSections);
@@ -136,179 +191,225 @@ export function LandingPage() {
     }
     setExpandedSections(newExpanded);
   };
-  return (
-    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden px-4 pb-8 pt-5 text-slate-50" style={{
-      background: 'linear-gradient(135deg, #0a0a0a 0%, #050505 50%, #0d0a15 100%)'
-    }}>
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0),rgba(0,0,0,0.8))]" />
-      <div className="relative z-10 flex items-center justify-between">
-        <BrandLogo />
-      </div>
 
-      <section className="relative z-10 mt-8 overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-black/55 px-5 py-7 shadow-[0_0_52px_rgba(153,69,255,0.14)] backdrop-blur-2xl">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(153,69,255,0.18),transparent_38%)]" />
-        <div className="absolute -right-10 top-6 h-28 w-28 rounded-full border border-violet-300/20" />
-        <div className="absolute left-4 top-4 h-16 w-16 rounded-full border border-cyan-300/20" />
-        <div className="relative">
-          <p className="text-xs uppercase tracking-[0.34em] text-cyan-200/70">Sovereign Regime Manifesto</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-white">
-            Join the chamber where culture becomes capital formation.
-          </h1>
-          <p className="mt-4 text-sm leading-6 text-slate-300">
-            Buy the Genesis NFT. Enter the Academy. Receive your Sovereign Regime ID card, your baseline ecosystem yields, your rune, and your blessing. Later, scale assets through Black Card tokenization inside the main dApp.
-          </p>
-
-          <div className="mt-6 space-y-6">
-            {(() => {
-              const sections: { title?: string; subtitle?: string; lines: string[] }[] = [];
-              let currentSection: { title?: string; subtitle?: string; lines: string[] } = { lines: [] };
-
-              manifestoLines.forEach((line) => {
-                const isMainTitle = line === 'SOVEREIGN REGIME';
-                const isSubtitle = line === 'The Sovereign Regime' && sections.length === 0;
-                const isSection = line && line === line.toUpperCase() && line.length > 1 && line !== '';
-
-                if (isMainTitle) {
-                  currentSection.title = line;
-                } else if (isSubtitle) {
-                  currentSection.subtitle = line;
-                } else if (isSection) {
-                  if (currentSection.lines.length > 0 || currentSection.title) {
-                    sections.push(currentSection);
-                  }
-                  currentSection = { title: line, lines: [] };
-                } else {
-                  currentSection.lines.push(line as string);
-                }
-              });
-
-              if (currentSection.lines.length > 0 || currentSection.title) {
-                sections.push(currentSection);
-              }
-
-              return sections.map((section, idx) => (
-                <div key={idx}>
-                  {section.title && section.title === 'SOVEREIGN REGIME' && (
-                    <div className="text-center mb-2">
-                      <h2 className="text-2xl font-black tracking-[0.1em] text-cyan-300">
-                        {section.title}
-                      </h2>
-                    </div>
-                  )}
-
-                  {section.subtitle && (
-                    <div className="text-center mb-6">
-                      <h3 className="text-lg font-bold tracking-[0.08em] text-violet-300/90">
-                        {section.subtitle}
-                      </h3>
-                    </div>
-                  )}
-
-                  {section.title && section.title !== 'SOVEREIGN REGIME' && section.lines.length > 0 && (
-                    <div className="rounded-lg border border-cyan-300/30 overflow-hidden bg-cyan-500/[0.04]">
-                      <button
-                        onClick={() => toggleSection(section.title!)}
-                        className="w-full px-4 py-3 border-b border-cyan-300/20 flex items-center justify-between hover:bg-cyan-500/[0.06] transition"
-                      >
-                        <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase text-left">
-                          {section.title}
-                        </p>
-                        <ChevronDown 
-                          size={18} 
-                          className={`flex-none text-cyan-300/70 transition-transform ${expandedSections.has(section.title) ? 'rotate-180' : ''}`}
-                        />
-                      </button>
-                      
-                      {expandedSections.has(section.title) && (
-                        <div className="space-y-2 p-4 animate-in fade-in duration-200">
-                          {section.lines.map((line) => {
-                            if (line === '') {
-                              return <div key={Math.random()} className="h-2" />;
-                            }
-                            return (
-                              <div key={line} className="rounded-lg border border-white/6 bg-white/[0.03] px-3 py-2 text-sm leading-6 text-slate-200/92">
-                                {line}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {section.title && section.title !== 'SOVEREIGN REGIME' && section.lines.length === 0 && (
-                    <div className="mb-3">
-                      <p className="text-sm font-bold tracking-[0.12em] text-cyan-200/70 uppercase">
-                        {section.title}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ));
-            })()}
-          </div>
-
-          <div className="mt-7 space-y-4">
-            <Link to="/app/home">
-              <Button className="w-full">Join the Sovereign Regime</Button>
-            </Link>
+  const renderManifestoModal = (content: string[], title: string) => {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden px-4">
+        <div
+          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          onClick={() => setShowManifestoModal(null)}
+        />
+        <div className="relative z-51 mx-auto flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-3xl border border-purple-300/30 bg-black/85 shadow-[0_0_80px_rgba(153,69,255,0.2)] backdrop-blur-2xl">
+          <div className="sticky top-0 z-10 flex flex-none items-center justify-between border-b border-purple-300/15 bg-black/90 px-6 py-4 backdrop-blur-xl">
+            <div>
+              <p className="text-xs uppercase tracking-[0.32em] text-purple-200/70">Academy Reference</p>
+              <h2 className="mt-1 text-lg font-bold text-purple-100">{title}</h2>
+            </div>
             <button
-              onClick={() => setShowWhitepaper(true)}
-              className="w-full rounded-lg border border-violet-300/30 bg-violet-500/10 px-4 py-2.5 text-sm font-semibold text-violet-100 transition hover:bg-violet-500/15"
+              onClick={() => setShowManifestoModal(null)}
+              className="flex-none rounded-lg bg-purple-500/10 p-2 text-purple-300 transition hover:bg-purple-500/20"
             >
-              Read Whitepaper
+              <X className="h-5 w-5" />
             </button>
           </div>
+          <div className="flex-1 overflow-y-auto px-6 py-6">
+            <div className="text-sm leading-relaxed text-slate-200">
+              {content.map((line, idx) => (
+                <div
+                  key={idx}
+                  className={line === '' ? 'h-3' : line === line.toUpperCase() && line.length > 1 ? 'mt-4 font-bold uppercase tracking-wider text-purple-300 mb-2' : 'mb-2'}
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+    );
+  };
 
-      <section className="relative z-10 mt-6 grid gap-4">
-        <Card>
-          <Badge>Genesis NFT First</Badge>
-          <h2 className="mt-4 text-xl font-semibold text-white">Membership is the key, not an afterthought.</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-300">
-            Phantom wallet purchase unlocks lifetime access to the Academy, baseline ecosystem yields, the Sovereign Regime ID card, and sovereign-only Cadabra transmissions.
-          </p>
-        </Card>
+  return (
+    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col overflow-hidden text-slate-50">
+      <style>{glitchStyles}</style>
+      
+      {/* Cosmic Background */}
+      <CosmicBackground />
 
+      {/* Main Content */}
+      <div className="relative z-20 flex flex-col gap-4 p-4">
+        {/* Header with Logo and Title */}
         <Card>
-          <Badge className="border-violet-300/20 bg-violet-500/12 text-violet-100/80">Curriculum</Badge>
-          <div className="mt-4 grid gap-3 text-sm text-slate-300">
-            <p>Market Maker Method + Moving Averages</p>
-            <p>TDI + 50Bounce Strategy</p>
-            <p>Tokenization & La Casa NFTs</p>
-            <p>Sophia Vaults & The Species AI Agents</p>
-            <p>Sovereign Finance & Hardening Capital</p>
+          <div className="flex flex-col items-center justify-center text-center">
+            <h1 className="text-6xl font-black leading-tight tracking-tight mb-4">
+              <span className="pulsing-glow text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
+                SOVEREIGN REGIME
+              </span>
+            </h1>
+            <img 
+              src="/assets/logo-graphic.jpg" 
+              alt="Sovereign Regime Logo"
+              className="w-56 h-56 object-cover rounded-lg border border-purple-300/40"
+            />
+            <p className="mt-4 text-xs tracking-[0.15em] text-purple-300/80 uppercase font-bold">
+              The Escape Velocity
+            </p>
           </div>
         </Card>
-      </section>
 
-      {/* Whitepaper Modal */}
-      {showWhitepaper && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
-          {/* Backdrop */}
+        {/* Top DApp Button */}
+        <Link to="/app/home" className="block">
+          <Button className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600">
+            Enter the DApp →
+          </Button>
+        </Link>
+
+        {/* Hero CTA */}
+        <Card className="border-purple-300/30 bg-purple-500/8">
+          <h2 className="text-xl font-bold text-purple-200">Enter the Sovereign Regime</h2>
+          <p className="mt-2 text-xs leading-5 text-slate-400">
+            Capital formation engine. Proven trading edge. On-chain Black Card tokenization. The Species AI agents. Your sovereignty, automated.
+          </p>
+          <Link to="/join" className="mt-4 block">
+            <Button className="w-full">Purchase Genesis NFT (15 SOL)</Button>
+          </Link>
+        </Card>
+
+        {/* ============ SECTION 1: SOVEREIGN REGIME MANIFESTO ============ */}
+        <Card className="border-purple-300/30 bg-purple-500/8">
+          <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3">Reference Material</p>
+          <button
+            onClick={() => setShowManifestoModal('regime')}
+            className="w-full rounded-lg border border-purple-300/20 bg-purple-500/15 px-4 py-3 text-left transition hover:bg-purple-500/25"
+          >
+            <p className="font-semibold text-purple-200">Sovereign Regime Manifesto</p>
+            <p className="mt-1 text-xs text-slate-400">The six components. The philosophy. The call to action.</p>
+          </button>
+        </Card>
+
+        {/* ============ SECTION 2: SOVEREIGN LIFESTYLE ============ */}
+        <Card className="border-purple-300/30 bg-purple-500/8">
+          <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3">Reference Material</p>
+          <button
+            onClick={() => setShowManifestoModal('lifestyle')}
+            className="w-full rounded-lg border border-purple-300/20 bg-purple-500/15 px-4 py-3 text-left transition hover:bg-purple-500/25"
+          >
+            <p className="font-semibold text-purple-200">Sovereign Lifestyle Manifesto</p>
+            <p className="mt-1 text-xs text-slate-400">Capital sovereignty. Optionality. Discipline. Tribe.</p>
+          </button>
+          <div className="mt-4">
+            <p className="text-xs text-slate-400 mb-3">Visual Journey</p>
+            <Slideshow slides={sovereignLifestyleSlideshow} />
+          </div>
+        </Card>
+
+        {/* ============ SECTION 3: DIGITAL TWIN ============ */}
+        <Card className="border-purple-300/30 bg-purple-500/8">
+          <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3">Reference Material</p>
+          <button
+            onClick={() => setShowManifestoModal('digital-twin')}
+            className="w-full rounded-lg border border-purple-300/20 bg-purple-500/15 px-4 py-3 text-left transition hover:bg-purple-500/25"
+          >
+            <p className="font-semibold text-purple-200">Digital Twin Architecture</p>
+            <p className="mt-1 text-xs text-slate-400">Why on-chain parallels matter. The 4 layers. Your path.</p>
+          </button>
+          <div className="mt-4">
+            <p className="text-xs text-slate-400 mb-3">Visual Journey</p>
+            <Slideshow slides={digitalTwinSlideshow} />
+          </div>
+        </Card>
+
+        {/* ============ SECTION 4: GENESIS PRESALE CTA ============ */}
+        <Card className="border-amber-300/30 bg-amber-500/8">
+          <Badge className="border-amber-300/30 bg-amber-500/15 text-amber-100/80 text-[10px]">Limited Time</Badge>
+          <h3 className="mt-3 text-lg font-bold text-amber-100">Genesis NFT: First 100 Only</h3>
+          <p className="mt-2 text-xs text-slate-400 font-semibold">Masters NFT • 15 SOL</p>
+          <div className="mt-3 space-y-2 text-xs text-slate-400">
+            <div className="flex items-start gap-2">
+              <span className="mt-1 text-amber-400">✦</span>
+              <span>Lifetime Academy access (14 modules, 250+ hours)</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-1 text-amber-400">✦</span>
+              <span>Sovereign ID card with unique rune + blessing</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-1 text-amber-400">✦</span>
+              <span>Cadabra elite feed (trading signals, opportunity calls)</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-1 text-amber-400">✦</span>
+              <span>Baseline yield distribution from ecosystem</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-1 text-amber-400">✦</span>
+              <span>Founding member status (lifetime recognition)</span>
+            </div>
+          </div>
+          <Link to="/join" className="mt-4 block">
+            <Button className="w-full">Claim Your Spot Now</Button>
+          </Link>
+        </Card>
+
+        {/* ============ QUICK LINKS ============ */}
+        <Card className="border-purple-300/30">
+          <div className="space-y-3">
+            <button
+              onClick={() => setShowWhitepaperModal(true)}
+              className="w-full rounded-lg border border-purple-300/20 bg-purple-500/15 px-4 py-3 text-left transition hover:bg-purple-500/25 font-semibold text-purple-200"
+            >
+              Read Full Whitepaper
+            </button>
+            <a
+              href="https://twitter.com/cryptoac3y"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between text-sm font-semibold text-purple-200 hover:text-purple-100 transition"
+            >
+              <span>Follow Founder on X (@cryptoac3y)</span>
+              <ExternalLink size={16} />
+            </a>
+          </div>
+        </Card>
+
+        {/* Bottom DApp Button */}
+        <Link to="/app/home" className="block">
+          <Button className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600">
+            Launch DApp →
+          </Button>
+        </Link>
+
+        {/* Footer */}
+        <div className="text-center text-xs text-slate-500 pb-4">
+          <p>Sovereign Regime • Born from first 100 founders</p>
+        </div>
+      </div>
+
+      {/* ============ MANIFESTO MODALS ============ */}
+      {showManifestoModal === 'regime' && renderManifestoModal(manifestoLines, 'Sovereign Regime Manifesto')}
+      {showManifestoModal === 'lifestyle' && renderManifestoModal(sovereignLifestyleManifesto, 'Sovereign Lifestyle Manifesto')}
+      {showManifestoModal === 'digital-twin' && renderManifestoModal(digitalTwinManifesto, 'Digital Twin Architecture')}
+
+      {/* ============ WHITEPAPER MODAL ============ */}
+      {showWhitepaperModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden px-4">
           <div
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => setShowWhitepaper(false)}
+            onClick={() => setShowWhitepaperModal(false)}
           />
-
-          {/* Modal Content */}
-          <div className="relative z-51 mx-4 flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-3xl border border-cyan-300/30 bg-black/85 shadow-[0_0_80px_rgba(0,245,255,0.2)] backdrop-blur-2xl">
-            {/* Header */}
-            <div className="sticky top-0 z-10 flex flex-none items-center justify-between border-b border-cyan-300/15 bg-black/90 px-6 py-4 backdrop-blur-xl">
+          <div className="relative z-51 mx-auto flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-3xl border border-purple-300/30 bg-black/85 shadow-[0_0_80px_rgba(153,69,255,0.2)] backdrop-blur-2xl">
+            <div className="sticky top-0 z-10 flex flex-none items-center justify-between border-b border-purple-300/15 bg-black/90 px-6 py-4 backdrop-blur-xl">
               <div>
-                <p className="text-xs uppercase tracking-[0.32em] text-cyan-200/70">Complete Documentation</p>
-                <h2 className="mt-1 text-lg font-bold text-cyan-100">Sovereign Regime Whitepaper</h2>
+                <p className="text-xs uppercase tracking-[0.32em] text-purple-200/70">Complete Documentation</p>
+                <h2 className="mt-1 text-lg font-bold text-purple-100">Sovereign Regime Whitepaper</h2>
               </div>
               <button
-                onClick={() => setShowWhitepaper(false)}
-                className="flex-none rounded-lg bg-violet-500/10 p-2 text-violet-300 transition hover:bg-violet-500/20"
+                onClick={() => setShowWhitepaperModal(false)}
+                className="flex-none rounded-lg bg-purple-500/10 p-2 text-purple-300 transition hover:bg-purple-500/20"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-
-            {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto px-6 py-6">
               <div className="whitespace-pre-line text-sm leading-relaxed text-slate-200">
                 {WHITEPAPER_CONTENT.split('\n').map((line, idx) => (
