@@ -275,6 +275,36 @@ We build.`;
           <Button onClick={() => setShowDMModal(true)} className="w-full mt-4">Purchase Genesis NFT (15 SOL)</Button>
         </Card>
 
+        {/* ============ FOUNDER STAMPED SECTION ============ */}
+        <Card className="border-purple-300/30 bg-black/40 backdrop-blur-lg overflow-hidden">
+          <div className="flex flex-col items-center gap-4">
+            {/* Tattoo Photo */}
+            <div className="relative w-full">
+              <img 
+                src="/assets/tattoo-photo.jpg" 
+                alt="Founder's Sovereign Regime Tattoo"
+                className="w-full h-auto object-cover rounded-lg border border-purple-300/40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg" />
+            </div>
+
+            {/* Overlay Text */}
+            <div className="w-full text-center px-2 py-2">
+              <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500 mb-3">
+                Founder Stamped.
+              </h2>
+              <p className="text-xs leading-6 text-slate-300 space-y-3 font-medium">
+                <div>This isn't a side project.</div>
+                <div className="text-purple-300/90">The founder doesn't just talk about sovereignty — he lives it.</div>
+                <div className="text-amber-200/80">主権体制 (Shuken Taisei) is now permanently inked on his body.</div>
+                <div className="text-slate-300 mt-4 pt-2 border-t border-purple-300/20">When he says "We build the people… the people build the business," he means it.</div>
+                <div>When he says full ownership and zero middlemen, he's already done it.</div>
+                <div className="text-purple-300 font-bold mt-3">This is real commitment. This is the Regime.</div>
+              </p>
+            </div>
+          </div>
+        </Card>
+
         {/* ============ SECTION 1: SOVEREIGN REGIME MANIFESTO ============ */}
         <Card className="border-purple-300/30 bg-purple-500/8">
           <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3">Reference Material</p>
