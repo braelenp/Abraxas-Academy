@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
+import { DMFounderModal } from './DMFounderModal';
 
 export function HomePage() {
+  const [showDMModal, setShowDMModal] = useState(false);
   return (
     <div className="relative space-y-4">
       {/* Hero Section - First 100 Genesis */}
@@ -37,12 +40,12 @@ export function HomePage() {
           </div>
 
           <div className="mt-4 flex gap-2">
-            <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-cyan-300/30 bg-cyan-500/15 px-4 py-2 text-center text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-7 font-medium leading-5 inline-block">
+            <Button onClick={() => setShowDMModal(true)} className="rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-7 font-medium px-6">
               Buy Genesis
-            </a>
-            <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-violet-300/30 bg-violet-500/15 px-4 py-2 text-center text-[11px] text-violet-100 hover:bg-violet-500/22 h-7 font-medium leading-5 inline-block">
+            </Button>
+            <Button onClick={() => setShowDMModal(true)} className="rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-7 font-medium px-6">
               Preview Genesis
-            </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -188,13 +191,16 @@ export function HomePage() {
 
       {/* Buy Genesis CTA */}
       <div className="flex gap-2">
-        <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-cyan-300/30 bg-cyan-500/15 px-4 py-3 text-center text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-9 font-medium leading-7 inline-block">
+        <Button onClick={() => setShowDMModal(true)} className="flex-1 rounded-lg border-cyan-300/30 bg-cyan-500/15 text-[11px] text-cyan-100 hover:bg-cyan-500/22 h-9 font-medium">
           Buy Genesis
-        </a>
-        <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg border border-violet-300/30 bg-violet-500/15 px-4 py-3 text-center text-[11px] text-violet-100 hover:bg-violet-500/22 h-9 font-medium leading-7 inline-block">
+        </Button>
+        <Button onClick={() => setShowDMModal(true)} className="flex-1 rounded-lg border-violet-300/30 bg-violet-500/15 text-[11px] text-violet-100 hover:bg-violet-500/22 h-9 font-medium">
           Preview Genesis
-        </a>
+        </Button>
       </div>
+
+      {/* DM Founder Modal */}
+      <DMFounderModal isOpen={showDMModal} onClose={() => setShowDMModal(false)} />
     </div>
   );
 }

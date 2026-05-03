@@ -14,6 +14,7 @@ import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { CosmicBackground } from '../components/CosmicBackground';
 import { Slideshow } from '../components/Slideshow';
+import { DMFounderModal } from '../components/DMFounderModal';
 
 // Add subtle glow effect styles
 const glitchStyles = `
@@ -116,6 +117,7 @@ export function LandingPage() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
   const [showManifestoModal, setShowManifestoModal] = useState<'regime' | 'lifestyle' | 'digital-twin' | null>(null);
   const [showWhitepaperModal, setShowWhitepaperModal] = useState(false);
+  const [showDMModal, setShowDMModal] = useState(false);
 
   const WHITEPAPER_CONTENT = `Sovereign Regime Whitepaper
 Version 2.0 – May 2026
@@ -270,9 +272,7 @@ We build.`;
           <p className="mt-2 text-xs leading-5 text-slate-400">
             Capital formation engine. Proven trading edge. On-chain Black Card tokenization. The Species AI agents. Your sovereignty, automated.
           </p>
-          <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-block rounded-2xl border border-purple-400/35 bg-purple-500/12 px-4 py-3 text-center text-sm font-semibold tracking-wide text-purple-100 shadow-[0_0_24px_rgba(153,69,255,0.18)] transition hover:bg-purple-500/18">
-            Purchase Genesis NFT (15 SOL)
-          </a>
+          <Button onClick={() => setShowDMModal(true)} className="w-full mt-4">Purchase Genesis NFT (15 SOL)</Button>
         </Card>
 
         {/* ============ SECTION 1: SOVEREIGN REGIME MANIFESTO ============ */}
@@ -346,9 +346,7 @@ We build.`;
               <span>Founding member status (lifetime recognition)</span>
             </div>
           </div>
-          <a href="https://x.com/cryptoac3y" target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-block rounded-2xl border border-amber-300/50 bg-gradient-to-r from-amber-500/20 to-amber-600/15 px-4 py-3 text-center text-sm font-semibold text-amber-100 shadow-[0_0_24px_rgba(217,119,6,0.2)] transition hover:from-amber-500/30 hover:to-amber-600/25 hover:shadow-[0_0_32px_rgba(217,119,6,0.3)]">
-            Claim Your Spot Now
-          </a>
+          <Button onClick={() => setShowDMModal(true)} className="w-full mt-4">Claim Your Spot Now</Button>
         </Card>
 
         {/* ============ QUICK LINKS ============ */}
@@ -422,6 +420,9 @@ We build.`;
           </div>
         </div>
       )}
+
+      {/* DM Founder Modal */}
+      <DMFounderModal isOpen={showDMModal} onClose={() => setShowDMModal(false)} />
     </div>
   );
 }
