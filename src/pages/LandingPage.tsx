@@ -244,14 +244,14 @@ We build.`;
         <Card>
           <div className="flex flex-col items-center justify-center text-center">
             <h1 className="text-6xl font-black leading-tight tracking-tight mb-4">
-              <span className="pulsing-glow text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
+              <span className="pulsing-glow text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500">
                 SOVEREIGN REGIME
               </span>
             </h1>
             <img 
-              src="/assets/logo-graphic.jpg" 
+              src="/assets/official-logo-graphic.jpg" 
               alt="Sovereign Regime Logo"
-              className="w-56 h-56 object-cover rounded-lg border border-purple-300/40"
+              className="w-56 h-56 object-contain rounded-lg border border-purple-300/40"
             />
             <p className="mt-4 text-xs tracking-[0.15em] text-purple-300/80 uppercase font-bold">
               The Escape Velocity
