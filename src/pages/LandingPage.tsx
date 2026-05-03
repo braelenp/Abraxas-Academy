@@ -251,7 +251,7 @@ We build.`;
             <img 
               src="/assets/official-logo-graphic.jpg" 
               alt="Sovereign Regime Logo"
-              className="w-56 h-56 object-contain rounded-lg border border-purple-300/40"
+              className="w-80 h-80 object-contain rounded-lg border border-purple-300/40"
             />
             <p className="mt-4 text-xs tracking-[0.15em] text-purple-300/80 uppercase font-bold">
               The Escape Velocity
