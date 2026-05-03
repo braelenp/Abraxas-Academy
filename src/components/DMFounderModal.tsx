@@ -49,7 +49,7 @@ export function DMFounderModal({ isOpen, onClose }: DMFounderModalProps) {
           {/* Body Text */}
           <div className="space-y-3">
             <p className="text-sm leading-6 text-slate-200">
-              To join as an early adopter or founding member, DM <span className="font-semibold text-amber-200">@ac3yway</span> on X.
+              To join as an early adopter or founding member, DM <span className="font-semibold text-amber-200">@cryptoac3y</span> on X.
             </p>
             <p className="text-sm leading-6 text-slate-200">
               Screening is brief. The regime moves fast.

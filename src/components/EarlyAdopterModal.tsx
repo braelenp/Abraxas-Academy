@@ -55,7 +55,7 @@ export function EarlyAdopterModal({ isOpen, onClose }: EarlyAdopterModalProps) {
               <span className="font-semibold text-amber-200">30 days only</span> — special founding rate applies.
             </p>
             <p className="text-sm leading-6 text-slate-200">
-              To claim your spot in the first cohort, DM <span className="font-semibold text-violet-200">@ac3yway</span> on X for screening.
+              To claim your spot in the first cohort, DM <span className="font-semibold text-violet-200">@cryptoac3y</span> on X for screening.
             </p>
           </div>
 
