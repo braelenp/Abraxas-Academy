@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, X, ExternalLink } from 'lucide-react';
+import { ChevronDown, X, ExternalLink, Users } from 'lucide-react';
 import {
   manifestoLines,
   sovereignLifestyleManifesto,
@@ -89,35 +89,35 @@ The people build the business.
 
 We do not chase hype. We do not rely on ads. We move through word of mouth, real relationships, and unbreakable results.
 
+PROOF: At the Moxy women-led event, we ran the sovereign flow with creators and business owners. They're tired of side work funding their actual business. They got it immediately. The event organizer is now collaborating to scale this. Physical rooms validate digital infrastructure.
+
 4. THE REGIME FLOW
 
 You generate capital outside the system first.
 You harden it on-chain.
 You let intelligent agents compound it forever.
 
+This is not theoretical. The first cohort is forming from real rooms, real relationships, and real people who said yes.
+
 5. WHY NOW
 
 The wealth transfer is accelerating. Institutions are moving onto Solana. The window for early, sovereign participation is open — but it will not stay open forever.
 
-We do not fight the old system. We outpace it.
+Post-COVID, people are starving for genuine community again. They're exhausted with extracted platforms. Moxy proved it: real spaces + on-chain infrastructure = the missing piece.
 
 6. CALL TO ACTION
 
 The Regime is already here.
 
-The only question is whether you step in now… or watch from the outside.
+The first cohort is forming in rooms like Moxy. From real people. From proven traders. From creators who said yes.
 
-Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol
+The only question is: are you in… or watching from the outside?
+
+Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol • Built from real rooms
 
 We do not ask.
 We do not wait.
 We build.`;;
-
-export function LandingPage() {
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-  const [showManifestoModal, setShowManifestoModal] = useState<'regime' | 'lifestyle' | 'digital-twin' | null>(null);
-  const [showWhitepaperModal, setShowWhitepaperModal] = useState(false);
-  const [showDMModal, setShowDMModal] = useState(false);
 
   const WHITEPAPER_CONTENT = `Sovereign Regime Whitepaper
 Version 2.0 – May 2026
@@ -160,25 +160,31 @@ The people build the business.
 
 We do not chase hype. We do not rely on ads. We move through word of mouth, real relationships, and unbreakable results.
 
+PROOF: At the Moxy women-led event, we ran the sovereign flow with creators and business owners. They're tired of side work funding their actual business. They got it immediately. The event organizer is now collaborating to scale this. Physical rooms validate digital infrastructure.
+
 4. THE REGIME FLOW
 
 You generate capital outside the system first.
 You harden it on-chain.
 You let intelligent agents compound it forever.
 
+This is not theoretical. The first cohort is forming from real rooms, real relationships, and real people who said yes.
+
 5. WHY NOW
 
 The wealth transfer is accelerating. Institutions are moving onto Solana. The window for early, sovereign participation is open — but it will not stay open forever.
 
-We do not fight the old system. We outpace it.
+Post-COVID, people are starving for genuine community again. They're exhausted with extracted platforms. Moxy proved it: real spaces + on-chain infrastructure = the missing piece.
 
 6. CALL TO ACTION
 
 The Regime is already here.
 
-The only question is whether you step in now… or watch from the outside.
+The first cohort is forming in rooms like Moxy. From real people. From proven traders. From creators who said yes.
 
-Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol
+The only question is: are you in… or watching from the outside?
+
+Masters NFT • BlackBox • Sophia Vaults • The Species • ALLURE • Spatial Protocol • Built from real rooms
 
 We do not ask.
 We do not wait.
@@ -272,6 +278,9 @@ We build.`;
           <p className="mt-2 text-xs leading-5 text-slate-400">
             Capital formation engine. Proven trading edge. On-chain Black Card tokenization. The Species AI agents. Your sovereignty, automated.
           </p>
+          <p className="mt-3 text-xs text-amber-200/70 border-l-2 border-amber-400/40 pl-3">
+            ✦ Now forming from real rooms. Moxy women-led event. Physical communities building digital infrastructure.
+          </p>
           <Button onClick={() => setShowDMModal(true)} className="w-full mt-4">Purchase Genesis NFT (15 SOL)</Button>
         </Card>
 
@@ -305,6 +314,48 @@ We build.`;
           </div>
         </Card>
 
+        {/* ============ LIVING PROOF: MOXY IRL ============ */}
+        <Card className="border-purple-300/30 bg-black/40 backdrop-blur-lg overflow-hidden">
+          <div className="flex flex-col gap-4">
+            {/* Header */}
+            <div className="flex items-start gap-3">
+              <div className="text-purple-400 mt-1">
+                <Users size={18} />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-purple-300/70 font-bold">Living Proof</p>
+                <h2 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500">
+                  Moxy Women-Led IRL
+                </h2>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="text-xs leading-6 text-slate-300 space-y-2">
+              <div className="border-l-2 border-purple-400/40 pl-3">
+                <p className="text-amber-200/80 font-semibold mb-1">At the Moxy event, the sovereign flow came to life.</p>
+                <p className="text-slate-300">
+                  Creators and business owners opened up about the real pain: doing side work they hate just to fund the business they actually love.
+                </p>
+              </div>
+              
+              <div className="border-l-2 border-pink-400/40 pl-3">
+                <p className="text-slate-400 italic mb-1">"When he says 'We build the people… the people build the business,' it clicked."</p>
+                <p className="text-slate-300">
+                  The event organizer — who runs full-time — immediately saw the value: trading skills + genuine community. Post-COVID, people are starving for real IRL connection.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-purple-400/40 pl-3 pt-2">
+                <p className="text-purple-300/90 font-semibold">Collaboration set. First cohort forming in physical rooms like this.</p>
+                <p className="text-slate-300 text-[11px] mt-1">
+                  This isn't digital first. This is real rooms → on-chain infrastructure. The Academy is the extension of these moments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Card>
+
         {/* ============ SECTION 1: SOVEREIGN REGIME MANIFESTO ============ */}
         <Card className="border-purple-300/30 bg-purple-500/8">
           <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3">Reference Material</p>
@@ -313,7 +364,7 @@ We build.`;
             className="w-full rounded-lg border border-purple-300/20 bg-purple-500/15 px-4 py-3 text-left transition hover:bg-purple-500/25"
           >
             <p className="font-semibold text-purple-200">Sovereign Regime Manifesto</p>
-            <p className="mt-1 text-xs text-slate-400">The six components. The philosophy. The call to action.</p>
+            <p className="mt-1 text-xs text-slate-400">"We build the people. The people build the business." — Proven in real rooms.</p>
           </button>
         </Card>
 
@@ -349,11 +400,46 @@ We build.`;
           </div>
         </Card>
 
+        {/* ============ WHAT'S HAPPENING NOW ============ */}
+        <Card className="border-purple-300/30 bg-purple-900/20 backdrop-blur-sm">
+          <p className="text-xs uppercase tracking-[0.3em] text-purple-300/70 mb-3 font-bold">Movement Update</p>
+          <h3 className="text-lg font-bold text-purple-200 mb-3">What's Happening Now</h3>
+          
+          <div className="space-y-3 text-xs text-slate-300">
+            <div className="flex gap-2">
+              <span className="text-purple-400 font-bold flex-shrink-0">→</span>
+              <div>
+                <p className="text-purple-200 font-semibold mb-1">Physical rooms are validating the model</p>
+                <p className="text-slate-400">Event creators, business owners, traders actually using the flow. Not theoretical. Real trades. Real connections.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-2">
+              <span className="text-amber-400 font-bold flex-shrink-0">→</span>
+              <div>
+                <p className="text-amber-200 font-semibold mb-1">On-chain infrastructure follows</p>
+                <p className="text-slate-400">The Academy, tokenization engine, and species agents are the digital backbone for these IRL relationships.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-2">
+              <span className="text-pink-400 font-bold flex-shrink-0">→</span>
+              <div>
+                <p className="text-pink-200 font-semibold mb-1">First 100 are forming now</p>
+                <p className="text-slate-400">From Moxy, from DM channels, from real communities. Not hype. Pure alignment and execution.</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+
         {/* ============ SECTION 4: GENESIS PRESALE CTA ============ */}
         <Card className="border-amber-300/30 bg-amber-500/8">
-          <Badge className="border-amber-300/30 bg-amber-500/15 text-amber-100/80 text-[10px]">Limited Time</Badge>
+          <Badge className="border-amber-300/30 bg-amber-500/15 text-amber-100/80 text-[10px]">First Cohort Forming</Badge>
           <h3 className="mt-3 text-lg font-bold text-amber-100">Genesis NFT: First 100 Only</h3>
           <p className="mt-2 text-xs text-slate-400 font-semibold">Masters NFT • 15 SOL</p>
+          <p className="mt-2 text-xs text-amber-200/80 border-l-2 border-amber-400/40 pl-3">
+            From real rooms. From proven traders. From creators who said yes.
+          </p>
           <div className="mt-3 space-y-2 text-xs text-slate-400">
             <div className="flex items-start gap-2">
               <span className="mt-1 text-amber-400">✦</span>
