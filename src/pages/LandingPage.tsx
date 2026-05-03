@@ -119,6 +119,12 @@ We do not ask.
 We do not wait.
 We build.`;;
 
+export function LandingPage() {
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [showManifestoModal, setShowManifestoModal] = useState<'regime' | 'lifestyle' | 'digital-twin' | null>(null);
+  const [showWhitepaperModal, setShowWhitepaperModal] = useState(false);
+  const [showDMModal, setShowDMModal] = useState(false);
+
   const toggleSection = (title: string) => {
     const newExpanded = new Set(expandedSections);
     if (newExpanded.has(title)) {
