@@ -270,9 +270,7 @@ We build.`;
           <p className="mt-2 text-xs leading-5 text-slate-400">
             Capital formation engine. Proven trading edge. On-chain Black Card tokenization. The Species AI agents. Your sovereignty, automated.
           </p>
-          <Link to="/join" className="mt-4 block">
-            <Button className="w-full">Purchase Genesis NFT (15 SOL)</Button>
-          </Link>
+          <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="w-full mt-4">Purchase Genesis NFT (15 SOL)</Button>
         </Card>
 
         {/* ============ SECTION 1: SOVEREIGN REGIME MANIFESTO ============ */}
@@ -346,9 +344,7 @@ We build.`;
               <span>Founding member status (lifetime recognition)</span>
             </div>
           </div>
-          <Link to="/join" className="mt-4 block">
-            <Button className="w-full">Claim Your Spot Now</Button>
-          </Link>
+          <Button onClick={() => window.open('https://x.com/cryptoac3y', '_blank')} className="w-full mt-4">Claim Your Spot Now</Button>
         </Card>
 
         {/* ============ QUICK LINKS ============ */}
